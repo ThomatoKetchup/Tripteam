@@ -1,3 +1,118 @@
-body{
-    background-color: blue;
+/*
+    font-family: 'Raleway', sans-serif;
+    font-family: 'Satisfy', cursive;
+*/
+
+body,html{
+    padding : 0;
+    margin : 0;
 }
+
+body{
+    font-family: 'Raleway', sans-serif;
+}
+
+.separator{
+    margin-bottom: 30px;
+    height: 3px;
+    width: 5%;
+    border:none;
+    box-shadow: none;
+    background-color: #a7e7e3;
+
+}
+
+
+
+/* Pour ne pas souligner les liens en a et en a:hover*/
+a , a:hover{
+    text-decoration: none;
+}
+
+/*header*/
+.header{
+    background-color: #a7e7e3;
+    height : 70px;
+    line-height: 70px; /*Pour centrer le contenu verticalement*/
+}
+
+.logo{
+    margin-top: -10px;
+    height: 95px;
+}
+
+.menu{
+    float:right;
+}
+
+.menu a{
+    color: black;
+    margin-right: 20px;
+}
+
+.menu a:hover{
+    color:#2C3E50; /*menu change de color quand on passe le curseur*/
+}
+
+/*banniere*/
+
+.banner{
+    width:100%;
+    max-width: 100%;
+}
+
+.ban{
+    width:100%;
+    max-width: 100%;
+    position:relative; /*donc se place en dessous de innerbanner*/
+}
+
+.ban img{
+    /*-webkit-filter: blur(5px);*/
+     width:100%;
+     max-width: 100%;
+ }
+
+.inner-banner{
+    position: absolute; /*donc se place au dessus de ban*/
+    text-align: center;
+    width: 100%;
+    top:40%;
+}
+
+.inner-banner h1{
+    font-size: 100px;
+    font-family: 'Satisfy', cursive;
+
+    color:white;
+    text-shadow: 1px 1px 5px black;
+}
+
+.inner-banner .btn-custom{
+    margin-top: 20px;
+    background-color: #a7e7e3 ;
+    color : whitesmoke; /*Le texte dans le boutton*/
+}
+
+.inner-banner .btn-custom:hover{
+    background-color: #2C3E50;
+}
+
+
+/*about*/
+#about{
+    margin-top: 40px;
+    font-family: 'Satisfy', cursive;
+    text-align: center;
+
+}
+
+.about article h2{
+    text-align: center;
+}
+
+.row{
+    margin-top: 40px;
+}
+
+

@@ -4,28 +4,21 @@
         <meta charset="UTF-8" />
         <title>{% block title %}Tripteam{% endblock %}</title>
         {% block stylesheets %}
+
+            <!-- CSS -->
             <link href="{{ asset('style/style.css') }}" rel="stylesheet" type="text/css" media="screen,projection" />
+            <link href="{{ asset('style/bootstrap.min.css') }}" rel="stylesheet"/>
+            <!-- FONT -->
+            <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+            <link href="https://fonts.googleapis.com/css?family=Satisfy" rel="stylesheet">
+
+
         {% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
 
         {% block body %}
-
-            <div id="left" class="bkg">
-                <ul id="nav">
-                    <li><a href=#></a>Mon profil</li>
-                    <li><a href=#></a>Mes groupes</li>
-                    <li><a href=#></a>Rechercher un groupe</li>
-                </ul>
-            </div>
-
-            <div id="right">
-
-            </div>
-
-
-
 
         {% endblock %}
         {% block javascripts %}{% endblock %}

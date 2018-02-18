@@ -26,7 +26,7 @@ class ProfilController extends Controller
 
         $profils = $em->getRepository('AppBundle:Profil')->findAll();
 
-        return $this->render('profil/index.html.twig', array(
+        return $this->render('/profil/index.html.twig', array(
             'profils' => $profils,
         ));
     }
