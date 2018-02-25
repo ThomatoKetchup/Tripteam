@@ -4,23 +4,18 @@
         <meta charset="UTF-8" />
         <title>{% block title %}Tripteam{% endblock %}</title>
         {% block stylesheets %}
-            <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-
             <!-- CSS -->
-            <link href="{{ asset('style/style.css') }}" rel="stylesheet" type="text/css" media="screen,projection" />
+            <link href="{{ asset('style/stye.css') }}" rel="stylesheet" type="text/css" media="screen,projection" />
             <link href="{{ asset('style/bootstrap.min.css') }}" rel="stylesheet"/>
-            <!-- FONT web-->
-            <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-            <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-            <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 
-            <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet"> <!--Pour les social net-->
+            <!--JS-->
+            <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+            <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+            <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 
             <!--Font style-->
             <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
             <link href="https://fonts.googleapis.com/css?family=Satisfy" rel="stylesheet">
-
-
         {% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
