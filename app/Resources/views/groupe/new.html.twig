@@ -21,8 +21,6 @@
 
             {{ form_start(form) }}
 
-
-
             <div class="form-group">
                 {{ form_label(form.dateDebutG, 'Date du début de votre séjour') }}
                 {{ form_widget(form.dateDebutG, {'attr':{'class':'form-control'}}) }}
@@ -41,9 +39,8 @@
                 {{ form_errors(form.lieuG) }}
             </div>
 
-
-
              <input type="submit" value="Valider" id="button" class="btn btn-primary btn-lg btn-block login-button"/>
+
             {{ form_end(form) }}
 
         </div>
