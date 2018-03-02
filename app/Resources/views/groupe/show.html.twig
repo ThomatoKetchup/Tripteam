@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Groupe</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ groupe.id }}</td>
+            </tr>
+            <tr>
+                <th>Nbmembres</th>
+                <td>{{ groupe.nbMembres }}</td>
+            </tr>
+            <tr>
+                <th>Datedebutg</th>
+                <td>{% if groupe.dateDebutG %}{{ groupe.dateDebutG|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Datefing</th>
+                <td>{% if groupe.dateFinG %}{{ groupe.dateFinG|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Lieug</th>
+                <td>{{ groupe.lieuG }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('groupe_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('groupe_edit', { 'id': groupe.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}
