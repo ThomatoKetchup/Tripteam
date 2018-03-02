@@ -1,22 +1,23 @@
 {% extends 'base.html.twig' %}
 
- {% block body %}
 
-     <!--header-->
-     <header class="container-fluid header">
-         <div class="container">
-             <a href="#"><img class="logo" src="{{ asset('img/logo.png') }}" alt="Tripteam" />
-             </a>
-             <nav class="menu">
-                 <a href="#">Accueil</a>
-                 <a href="#about">Qu'est-ce que Tripteam</a>
-                 <a href="#joinus">S'inscrire</a>
-                 <a href="#joinus">Se connecter</a>
-             </nav>
-         </div>
+{% block sidebar %}
+    <header class="container-fluid header">
+        <div class="container">
+            <a href="#"><img class="logo" src="{{ asset('img/logo.png') }}" alt="Tripteam" />
+            </a>
+            <nav class="menu">
+                <a href="#">Accueil</a>
+                <a href="#about">Qu'est-ce que Tripteam</a>
+                <a href="#joinus">S'inscrire</a>
+                <a href="#joinus">Se connecter</a>
+            </nav>
+        </div>
+    </header>
+{% endblock %}
 
-     </header>
-     <!--end header-->
+
+{% block body %}
 
      <!--bannière-->
      <section class="container-fluid banner">
@@ -163,24 +164,10 @@
          </div>
 
      </section>
+
      <!--end Nous rejoindre-->
 
      <!--Footer-->
-     <footer class="container-fluid footer">
-         <div>
-             <h4 class="widget-title">Follow us</h4>
-             <ul class="social-nav">
-                 <li><a href="#" target="_blank" title="Twitter" rel="nofollow" class="twitter"><i class="fa fa-twitter"></i></a></li>
-                 <li><a href="#" target="_blank" title="Facebook" rel="nofollow" class="facebook"><i class="fa fa-facebook"></i></a></li>
-                 <li><a href="#" target="_blank" title="Google plus" rel="nofollow" class="google"><i class="fa fa-google-plus"></i></a></li>
-                 <li><a href="#" target="_blank" title="Linkedin" rel="nofollow" class="linkedin"><i class="fa fa-linkedin"></i></a></li>
-                 <li><a href="#" target="_blank" title="Pinterest" rel="nofollow" class="pinterest"><i class="fa fa-pinterest"></i></a></li>
-             </ul>
-         </div>
-
-
-     </footer>
-     <!--end footer-->
 
 
 
