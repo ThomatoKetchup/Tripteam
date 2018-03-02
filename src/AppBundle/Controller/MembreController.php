@@ -22,6 +22,6 @@ class MembreController extends Controller
      */
     public function indexAction()
     {
-        return $this->render('membre/membre.html.twig');
+        return $this->render('membre.html.twig');
     }
 }

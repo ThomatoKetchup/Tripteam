@@ -1,22 +1,23 @@
 {% extends 'base.html.twig' %}
 
- {% block body %}
 
-     <!--header-->
-     <header class="container-fluid header">
-         <div class="container">
-             <a href="#"><img class="logo" src="{{ asset('img/logo.png') }}" alt="Tripteam" />
-             </a>
-             <nav class="menu">
-                 <a href="#">Accueil</a>
-                 <a href="#about">Qu'est-ce que Tripteam</a>
-                 <a href="#joinus">S'inscrire</a>
-                 <a href="#joinus">Se connecter</a>
-             </nav>
-         </div>
+{% block sidebar %}
+    <header class="container-fluid header">
+        <div class="container">
+            <a href="#"><img class="logo" src="{{ asset('img/logo.png') }}" alt="Tripteam" />
+            </a>
+            <nav class="menu">
+                <a href="#">Accueil</a>
+                <a href="#about">Qu'est-ce que Tripteam</a>
+                <a href="#joinus">S'inscrire</a>
+                <a href="#joinus">Se connecter</a>
+            </nav>
+        </div>
+    </header>
+{% endblock %}
 
-     </header>
-     <!--end header-->
+
+{% block body %}
 
      <!--bannière-->
      <section class="container-fluid banner">
@@ -167,7 +168,6 @@
      <!--end Nous rejoindre-->
 
      <!--Footer-->
-r-->
 
 
 
