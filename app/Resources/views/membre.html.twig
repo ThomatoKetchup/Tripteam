@@ -5,9 +5,10 @@
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
 
 
+
     <!-- CSS -->
     <link href="{{ asset('style/membre.css') }}" rel="stylesheet" type="text/css" media="screen,projection" />
-    <link href="{{ asset('style/bootstrap.min.css') }}" rel="stylesheet"/>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <!--Font style-->
 
     <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
@@ -30,10 +31,11 @@
              <div class="menu-list">
 
                  <ul id="menu-content" class="menu-content collapse out">
-                     <li>                          <a href="#">
+                     <li>                          <a href="{{ path('user_show', { 'id': 1 }) }}">
                              <i class="fa fa-user fa-lg"></i> Mon profil </a>
 
                      </li>
+
                      <li>
                          <a href="#">
                              <i class="fa fa-users fa-lg"></i> Mes groupes
