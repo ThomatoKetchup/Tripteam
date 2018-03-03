@@ -2389,7 +2389,6 @@
         },
         {
             "name": "symfony/phpunit-bridge",
-<<<<<<< HEAD
             "version": "v3.4.5",
             "source": {
                 "type": "git",
@@ -2400,7 +2399,6 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/symfony/phpunit-bridge/zipball/32b06d2b0babf3216e55acfce42249321a304f03",
                 "reference": "32b06d2b0babf3216e55acfce42249321a304f03",
-=======
             "version": "v3.4.4",
             "source": {
                 "type": "git",
@@ -2411,7 +2409,6 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/symfony/phpunit-bridge/zipball/6a65b09b666f975dd70ec2bb9e9b1a87dbb02aca",
                 "reference": "6a65b09b666f975dd70ec2bb9e9b1a87dbb02aca",
->>>>>>> parent of 5dd22a1... Merge branch 'master' of https://github.com/ThomatoKetchup/Tripteam
                 "shasum": ""
             },
             "require": {
@@ -2464,11 +2461,8 @@
             ],
             "description": "Symfony PHPUnit Bridge",
             "homepage": "https://symfony.com",
-<<<<<<< HEAD
             "time": "2018-02-14T23:24:28+00:00"
-=======
             "time": "2018-01-21T19:05:02+00:00"
->>>>>>> parent of 5dd22a1... Merge branch 'master' of https://github.com/ThomatoKetchup/Tripteam
         }
     ],
     "aliases": [],
