@@ -2389,6 +2389,7 @@
         },
         {
             "name": "symfony/phpunit-bridge",
+
             "version": "v3.4.5",
             "source": {
                 "type": "git",
@@ -2461,7 +2462,6 @@
             ],
             "description": "Symfony PHPUnit Bridge",
             "homepage": "https://symfony.com",
-            "time": "2018-02-14T23:24:28+00:00"
             "time": "2018-01-21T19:05:02+00:00"
         }
     ],
