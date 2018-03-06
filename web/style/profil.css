@@ -29,5 +29,11 @@ h4{
 }
 
 .user-image{
-    margin-bottom: 50px;
+    margin-bottom: 20px;
+}
+
+button{
+    margin-bottom: 40px !important;
+    background-color: #f1ab53 !important;
+    border:none !important;
 }
