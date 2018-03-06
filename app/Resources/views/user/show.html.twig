@@ -1,92 +1,87 @@
 {% extends 'membre.html.twig' %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('style/profil.css') }}" rel="stylesheet" type="text/css" media="screen,projection"/>
+
+{% endblock %}
 
 
-{% block body %}
+{% block content %}
 
-    <div class="container page-content">
+
+
+    <div class="col-md-8 col-md-offset-1 col-sm-8  main-content">
         <div class="row">
-
-            <div class="col-sm-8 col-md-8 user-details">
-                <div class="user-image">
-                    <img src="http://www.gravatar.com/avatar/2ab7b2009d27ec37bffee791819a090c?s=100&d=mm&r=g" alt="Karan Singh Sisodia" title="Karan Singh Sisodia" class="img-circle">
-                </div>
-                <div class="user-info-block">
-                    <div class="user-heading">
-                        <td>{{ user.nom }}</td>
-                        <span class="help-block">Chandigarh, IN</span>
-                    </div>
-                    <ul class="navigation">
-                        <li class="active">
-                            <a data-toggle="tab" href="#information">
-                                <span class="glyphicon glyphicon-user"></span>
-                            </a>
-                        </li>
-                        <li>
-                            <a data-toggle="tab" href="#settings">
-                                <span class="glyphicon glyphicon-cog"></span>
-                            </a>
-                        </li>
-                        <li>
-                            <a data-toggle="tab" href="#email">
-                                <span class="glyphicon glyphicon-envelope"></span>
-                            </a>
-                        </li>
-                        <li>
-                            <a data-toggle="tab" href="#events">
-                                <span class="glyphicon glyphicon-calendar"></span>
-                            </a>
-                        </li>
-                    </ul>
-                    <div class="user-body">
-                        <div class="tab-content">
-                            <div id="information" class="tab-pane active">
-                                <h4>Account Information</h4>
-                            </div>
-                            <div id="settings" class="tab-pane">
-                                <h4>Settings</h4>
-                            </div>
-                            <div id="email" class="tab-pane">
-                                <h4>Send Message</h4>
-                            </div>
-                            <div id="events" class="tab-pane">
-                                <h4>Events</h4>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div class="user-image">
+                <div class="logo">
+                    <img src="http://lorempixel.com/output/people-q-g-64-64-1.jpg" class="img-responsive center-block logoimg"
+                         alt="Logo"></div>
+                <h2>{{ user.prenom }} {{ user.nom |  capitalize }}</h2>
             </div>
+
+            <div class="infoperso">
+                <h4>Informations personnelles</h4>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit </p>
+            </div>
+
+
+            <hr class="separator">
+
+            <div class="cdi">
+                <h4>Centres d'intérêts</h4>
+                <ul class="list-inline">
+                    <li>Livres policiers,</li>
+
+                    <li>Le football argentin,</li>
+
+                    <li>Les tigres</li>
+
+
+
+                </ul>
+            </div>
+
+            <hr class="separator">
+
+            <div class="langues">
+                <h4>Langues</h4>
+                <ul class="list-inline">
+                    <li>Français</li>
+
+                    <li>Anglais</li>
+
+                    <li>Espagnol</li>
+
+                </ul>
+            </div>
+
+            <hr class="separator">
+
+            <div class="groups">
+                <h4>Groupes</h4>
+                <ul class="list-inline">
+                    <li><a>Les teufeurs</a></li>
+
+                    <li>Anglais</li>
+
+                    <li>Espagnol</li>
+
+                </ul>
+
+            </div>
+
+            <hr class="separator">
+
+            <div class="voyages">
+                <h4>Voyages</h4>
+            </div>
+
+
         </div>
-        <h1>User</h1>
-
-        <table>
-            <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ user.id }}</td>
-            </tr>
-            <tr>
-                <th>Nom</th>
-                <td>{{ user.nom }}</td>
-                <td>{{ user.email }}</td>
-            </tr>
-            </tbody>
-        </table>
-
-        <ul>
-            <li>
-                <a href="{{ path('user_index') }}">Back to the list</a>
-            </li>
-            <li>
-                <a href="{{ path('user_edit', { 'id': user.id }) }}">Edit</a>
-            </li>
-            <li>
-                {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-                {{ form_end(delete_form) }}
-            </li>
-        </ul>
 
 
     </div>
+    </div>
+    </body>
 
 {% endblock %}

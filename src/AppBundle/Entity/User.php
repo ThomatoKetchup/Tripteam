@@ -24,7 +24,16 @@ class User extends BaseUser
      * @ORM\Column(type="string")
      */
     protected $nom;
+    /**
+     * @ORM\Column(type="string")
+     */
+    protected $prenom;
 
+
+    /**
+     * @ORM\Column(type="date", options={"default" = "1990-01-01"})
+     */
+    private $dateofbirth;
 
     public function __construct()
     {
@@ -54,5 +63,55 @@ class User extends BaseUser
     public function getNom()
     {
         return $this->nom;
+    }
+
+    /**
+     * Set prenom
+     *
+     * @param string $prenom
+     *
+     * @return User
+     */
+    public function setPrenom($prenom)
+    {
+        $this->prenom = $prenom;
+
+        return $this;
+    }
+
+    /**
+     * Get prenom
+     *
+     * @return string
+     */
+    public function getPrenom()
+    {
+        return $this->prenom;
+    }
+
+
+
+    /**
+     * Set dateofbirth
+     *
+     * @param \DateTime $dateofbirth
+     *
+     * @return User
+     */
+    public function setDateofbirth($dateofbirth)
+    {
+        $this->dateofbirth = $dateofbirth;
+
+        return $this;
+    }
+
+    /**
+     * Get dateofbirth
+     *
+     * @return \DateTime
+     */
+    public function getDateofbirth()
+    {
+        return $this->dateofbirth;
     }
 }
