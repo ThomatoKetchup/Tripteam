@@ -14,6 +14,13 @@ class User extends BaseUser
 {
 
     /**
+     * @ORM\ManyToMany(targetEntity="Groupe", inversedBy="users")
+     * @ORM\JoinColumn(name="group_id", referencedColumnName="id")
+     */
+    private $groups ;
+
+
+    /**
      * @ORM\Id
      * @ORM\Column(type="integer")
      * @ORM\GeneratedValue(strategy="AUTO")
