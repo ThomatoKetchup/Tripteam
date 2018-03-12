@@ -14,6 +14,13 @@ class User extends BaseUser
 {
 
     /**
+     * @ORM\ManyToMany(targetEntity="Groupe", cascade={"persist"}, mappedBy="users")
+     * @ORM\JoinTable(name="users_groupes")
+     */
+    private $groupes;
+
+
+    /**
      * @ORM\Id
      * @ORM\Column(type="integer")
      * @ORM\GeneratedValue(strategy="AUTO")
@@ -31,7 +38,7 @@ class User extends BaseUser
 
 
     /**
-     * @ORM\Column(type="date")
+     * @ORM\Column(type="date", options={"default" = "1990-01-01"})
      */
     private $dateofbirth;
 
@@ -90,4 +97,28 @@ class User extends BaseUser
     }
 
 
+
+    /**
+     * Set dateofbirth
+     *
+     * @param \DateTime $dateofbirth
+     *
+     * @return User
+     */
+    public function setDateofbirth($dateofbirth)
+    {
+        $this->dateofbirth = $dateofbirth;
+
+        return $this;
+    }
+
+    /**
+     * Get dateofbirth
+     *
+     * @return \DateTime
+     */
+    public function getDateofbirth()
+    {
+        return $this->dateofbirth;
+    }
 }

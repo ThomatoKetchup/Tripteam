@@ -14,6 +14,7 @@ class UserType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('nom');
+        $builder->add('prenom');
     }/**
      * {@inheritdoc}
      */

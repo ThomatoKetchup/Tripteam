@@ -10,15 +10,13 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="groupe")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\GroupeRepository")
  */
-class Groupe
+class Notification
 {
 
     /**
-     * @ORM\ManyToMany(targetEntity="User", cascade={"persist"}, inversedBy="groupes")
-     * @ORM\JoinTable(name="groupes_users")
+     * @ORM\ManyToMany(targetEntity="User", mappedBy="group")
      */
-    protected $users;
-
+    private $users;
     /**
      * @var int
      *
@@ -162,45 +160,5 @@ class Groupe
     {
         return $this->lieuG;
     }
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->users = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-
-    /**
-     * Add user
-     *
-     * @param \AppBundle\Entity\User $user
-     *
-     * @return Groupe
-     */
-    public function addUser(\AppBundle\Entity\User $user)
-    {
-        $this->users[] = $user;
-
-        return $this;
-    }
-
-    /**
-     * Remove user
-     *
-     * @param \AppBundle\Entity\User $user
-     */
-    public function removeUser(\AppBundle\Entity\User $user)
-    {
-        $this->users->removeElement($user);
-    }
-
-    /**
-     * Get users
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getUsers()
-    {
-        return $this->users;
-    }
 }
+

@@ -14,10 +14,10 @@ class User extends BaseUser
 {
 
     /**
-     * @ORM\ManyToMany(targetEntity="Groupe", inversedBy="users")
-     * @ORM\JoinColumn(name="group_id", referencedColumnName="id")
+     * @ORM\ManyToMany(targetEntity="Groupe", cascade={"persist"}, mappedBy="users")
+     * @ORM\JoinTable(name="users_groupes")
      */
-    private $groups ;
+    private $groupes;
 
 
     /**
@@ -120,5 +120,48 @@ class User extends BaseUser
     public function getDateofbirth()
     {
         return $this->dateofbirth;
+    }
+
+    /**
+     * Add groupe
+     *
+     * @param \AppBundle\Entity\Groupe $groupe
+     *
+     * @return User
+     */
+    public function addGroupe(\AppBundle\Entity\Groupe $groupe)
+    {
+        $this->groupes[] = $groupe;
+
+        return $this;
+    }
+
+    /**
+     * Remove groupe
+     *
+     * @param \AppBundle\Entity\Groupe $groupe
+     */
+    public function removeGroupe(\AppBundle\Entity\Groupe $groupe)
+    {
+        $this->groupes->removeElement($groupe);
+    }
+
+    /**
+     * Get groupes
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getGroupes()
+    {
+        return $this->groupes;
+    }
+
+    public function setEmail($email)
+    {
+        $email = is_null($email) ? '' : $email;
+        parent::setEmail($email);
+        $this->setUsername($email);
+
+        return $this;
     }
 }
