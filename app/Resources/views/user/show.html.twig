@@ -26,6 +26,22 @@
                     Modifiez
                 </button>
 
+                {{ form_start(edit_form) }}
+                {{ form_widget(edit_form) }}
+                <input type="submit" value="Edit" />
+                {{ form_end(edit_form) }}
+
+                <ul>
+                    <li>
+                        <a href="{{ path('user_index') }}">Back to the list</a>
+                    </li>
+                    <li>
+                        {{ form_start(delete_form) }}
+                        <input type="submit" value="Delete">
+                        {{ form_end(delete_form) }}
+                    </li>
+                </ul>
+
 
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit </p>
             </div>
@@ -90,8 +106,6 @@
     </div>
 
 
-    {{ form_start(form) }}
-    {{ form_end(form) }}
 
 
     </body>
