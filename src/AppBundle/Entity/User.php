@@ -20,6 +20,7 @@ class User extends BaseUser
     private $groupes;
 
 
+
     /**
      * @ORM\Id
      * @ORM\Column(type="integer")
@@ -38,10 +39,22 @@ class User extends BaseUser
 
 
     /**
-     * @ORM\Column(type="date", options={"default" = "1990-01-01"})
+     * @ORM\Column(type="date")
      */
-    private $dateofbirth;
+    private $dateofbirth='1990-01-01';
 
+    /**
+     * @ORM\Column(type="text")
+     */
+    private $presentation;
+
+
+
+    /**
+     * @ORM\ManyToMany(targetEntity="Groupe", cascade={"persist"}, mappedBy="users")
+     * @ORM\JoinTable(name="users_groupes")
+     */
+    private $groupes;
     public function __construct()
     {
         parent::__construct();
@@ -132,7 +145,6 @@ class User extends BaseUser
     public function addGroupe(\AppBundle\Entity\Groupe $groupe)
     {
         $this->groupes[] = $groupe;
-
         return $this;
     }
 
@@ -163,5 +175,29 @@ class User extends BaseUser
         $this->setUsername($email);
 
         return $this;
+    }
+
+    /**
+     * Set presentation
+     *
+     * @param string $presentation
+     *
+     * @return User
+     */
+    public function setPresentation($presentation)
+    {
+        $this->presentation = $presentation;
+
+        return $this;
+    }
+
+    /**
+     * Get presentation
+     *
+     * @return string
+     */
+    public function getPresentation()
+    {
+        return $this->presentation;
     }
 }
