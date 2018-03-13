@@ -24,21 +24,6 @@
                     Modifiez mon profil
                 </button>
 
-                {{ form_start(edit_form) }}
-                {{ form_widget(edit_form) }}
-                <input type="submit" value="Edit" />
-                {{ form_end(edit_form) }}
-
-                <ul>
-                    <li>
-                        <a href="{{ path('user_index') }}">Back to the list</a>
-                    </li>
-                    <li>
-                        {{ form_start(delete_form) }}
-                        <input type="submit" value="Delete">
-                        {{ form_end(delete_form) }}
-                    </li>
-                </ul>
 
                 <!-- Modal -->
                 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -64,8 +49,8 @@
                         </div><!-- /.modal-content -->
                     </div><!-- /.modal-dialog -->
                 </div><!-- /.modal -->
+                <p>{{ user.textpresentation }}</p>
 
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit </p>
             </div>
             <hr class="separator">
 
@@ -73,6 +58,7 @@
                 <h4>Centres d'intérêts</h4>
                 <ul class="list-inline">
                     <li>Livres policiers,</li>
+                    <li> Salut test</li>
 
                     <li>Le football argentin,</li>
 
@@ -118,8 +104,6 @@
         </div>
     </div>
     </div>
-
-
 
 
     </body>

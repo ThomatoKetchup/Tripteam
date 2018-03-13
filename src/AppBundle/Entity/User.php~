@@ -13,11 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
 class User extends BaseUser
 {
 
-    /**
-     * @ORM\ManyToMany(targetEntity="Groupe", cascade={"persist"}, mappedBy="users")
-     * @ORM\JoinTable(name="users_groupes")
-     */
-    private $groupes;
+
 
 
     /**
@@ -39,8 +35,24 @@ class User extends BaseUser
 
     /**
      * @ORM\Column(type="date", options={"default" = "1990-01-01"})
+     *
      */
     private $dateofbirth;
+
+    /**
+     * @ORM\Column(type="text")
+     *
+     */
+    private $textPresentation;
+
+
+
+
+    /**
+     * @ORM\ManyToMany(targetEntity="Groupe", cascade={"persist"}, mappedBy="users")
+     * @ORM\JoinTable(name="users_groupes")
+     */
+    private $groupes;
 
     public function __construct()
     {
@@ -132,7 +144,6 @@ class User extends BaseUser
     public function addGroupe(\AppBundle\Entity\Groupe $groupe)
     {
         $this->groupes[] = $groupe;
-
         return $this;
     }
 
