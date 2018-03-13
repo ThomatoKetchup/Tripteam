@@ -60,16 +60,26 @@ class UserController extends Controller
 
     /**
      * Finds and displays a user entity.
+     * Et permet de modifier de par les modal
      *
      * @Route("/{id}", name="user_show")
-     * @Method("GET")
+     * @Method({"GET","POST"})
      */
-    public function showAction(User $user)
+    public function showAction(Request $request,User $user)
     {
         $deleteForm = $this->createDeleteForm($user);
+        $editForm = $this->createForm('AppBundle\Form\UserType', $user);
+        $editForm->handleRequest($request);
+        if ($editForm->isSubmitted() && $editForm->isValid()) {
+            $this->getDoctrine()->getManager()->flush();
+            return $this->redirectToRoute('user_show', array('id' => $user->getId()));
+        }
+
 
         return $this->render('user/show.html.twig', array(
             'user' => $user,
+            'edit_form' => $editForm->createView(),
+
             'delete_form' => $deleteForm->createView(),
         ));
     }
@@ -85,7 +95,6 @@ class UserController extends Controller
         $deleteForm = $this->createDeleteForm($user);
         $editForm = $this->createForm('AppBundle\Form\UserType', $user);
         $editForm->handleRequest($request);
-
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
