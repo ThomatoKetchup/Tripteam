@@ -40,7 +40,7 @@ class User extends BaseUser
     private $dateofbirth;
 
     /**
-     * @ORM\Column(type="text")
+     * @ORM\Column(type="text", nullable=true)
      *
      */
     private $textPresentation;
