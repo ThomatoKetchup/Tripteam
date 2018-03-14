@@ -10,4 +10,15 @@ namespace AppBundle\Repository;
  */
 class GroupeRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function searchGroup($data)
+    {
+        $queryBuilder = $this->createQueryBuilder('Groupe');
+        $queryBuilder->select('Groupe')
+            ->where('dateDebutG=?1')
+            ->andWhere('dateFinG=?2')
+            ->andWhere('lieuG=?3')
+            ->setParameters(array(1 => $data['dateDebutG'], 2 => $data['dateFinG'], 3 => $data['lieuG']));
+
+        return ($queryBuilder);
+    }
 }
