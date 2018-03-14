@@ -175,4 +175,28 @@ class User extends BaseUser
 
         return $this;
     }
+
+    /**
+     * Set textPresentation
+     *
+     * @param string $textPresentation
+     *
+     * @return User
+     */
+    public function setTextPresentation($textPresentation)
+    {
+        $this->textPresentation = $textPresentation;
+
+        return $this;
+    }
+
+    /**
+     * Get textPresentation
+     *
+     * @return string
+     */
+    public function getTextPresentation()
+    {
+        return $this->textPresentation;
+    }
 }
