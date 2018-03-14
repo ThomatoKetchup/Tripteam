@@ -13,6 +13,8 @@ class ProfilType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        parent::buildForm($builder, $options);
+        $builder->remove('username');
         $builder->add('nom')->add('prenom')->add('pdp')->add('dob')->add('adrmail');
     }/**
      * {@inheritdoc}

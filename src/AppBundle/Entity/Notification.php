@@ -7,18 +7,16 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Groupe
  *
- * @ORM\Table(name="groupe")
+ * @ORM\Table(name="Notification")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\GroupeRepository")
  */
-class Groupe
+class Notification
 {
 
     /**
-     * @ORM\ManyToMany(targetEntity="User", cascade={"persist"}, inversedBy="groupes")
-     * @ORM\JoinTable(name="groupes_users")
+     * @ORM\ManyToMany(targetEntity="User", mappedBy="group")
      */
-    protected $users;
-
+    private $users;
     /**
      * @var int
      *
@@ -175,7 +173,7 @@ class Groupe
      *
      * @param \AppBundle\Entity\User $user
      *
-     * @return Groupe
+     * @return Notification
      */
     public function addUser(\AppBundle\Entity\User $user)
     {

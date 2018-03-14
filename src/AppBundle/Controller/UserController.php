@@ -5,7 +5,8 @@ namespace AppBundle\Controller;
 use AppBundle\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * User controller.
@@ -59,16 +60,26 @@ class UserController extends Controller
 
     /**
      * Finds and displays a user entity.
+     * Et permet de modifier de par les modal
      *
      * @Route("/{id}", name="user_show")
-     * @Method("GET")
+     * @Method({"GET","POST"})
      */
-    public function showAction(User $user)
+    public function showAction(Request $request,User $user)
     {
         $deleteForm = $this->createDeleteForm($user);
+        $editForm = $this->createForm('AppBundle\Form\UserType', $user);
+        $editForm->handleRequest($request);
+        if ($editForm->isSubmitted() && $editForm->isValid()) {
+            $this->getDoctrine()->getManager()->flush();
+            return $this->redirectToRoute('user_show', array('id' => $user->getId()));
+        }
+
 
         return $this->render('user/show.html.twig', array(
             'user' => $user,
+            'edit_form' => $editForm->createView(),
+
             'delete_form' => $deleteForm->createView(),
         ));
     }
@@ -84,7 +95,6 @@ class UserController extends Controller
         $deleteForm = $this->createDeleteForm($user);
         $editForm = $this->createForm('AppBundle\Form\UserType', $user);
         $editForm->handleRequest($request);
-
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
@@ -92,6 +102,29 @@ class UserController extends Controller
         }
 
         return $this->render('user/edit.html.twig', array(
+            'user' => $user,
+            'edit_form' => $editForm->createView(),
+            'delete_form' => $deleteForm->createView(),
+        ));
+    }
+
+    /**
+     * Displays a form to edit an existing user entity.
+     *
+     * @Route("/user/{id}", name="user_edit")
+     *
+     */
+    public function editActionProfil(Request $request, User $user)
+    {
+        $deleteForm = $this->createDeleteForm($user);
+        $editForm = $this->createForm('AppBundle\Form\UserType', $user);
+        $editForm->handleRequest($request);
+
+        if ($editForm->isSubmitted() && $editForm->isValid()) {
+            $this->getDoctrine()->getManager()->flush();
+            }
+
+        return $this->render('user/show.html.twig', array(
             'user' => $user,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),

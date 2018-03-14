@@ -13,6 +13,9 @@ use Doctrine\ORM\Mapping as ORM;
 class User extends BaseUser
 {
 
+
+
+
     /**
      * @ORM\Id
      * @ORM\Column(type="integer")
@@ -32,8 +35,24 @@ class User extends BaseUser
 
     /**
      * @ORM\Column(type="date", options={"default" = "1990-01-01"})
+     *
      */
     private $dateofbirth;
+
+    /**
+     * @ORM\Column(type="text")
+     *
+     */
+    private $textPresentation;
+
+
+
+
+    /**
+     * @ORM\ManyToMany(targetEntity="Groupe", cascade={"persist"}, mappedBy="users")
+     * @ORM\JoinTable(name="users_groupes")
+     */
+    private $groupes;
 
     public function __construct()
     {
@@ -113,5 +132,71 @@ class User extends BaseUser
     public function getDateofbirth()
     {
         return $this->dateofbirth;
+    }
+
+    /**
+     * Add groupe
+     *
+     * @param \AppBundle\Entity\Groupe $groupe
+     *
+     * @return User
+     */
+    public function addGroupe(\AppBundle\Entity\Groupe $groupe)
+    {
+        $this->groupes[] = $groupe;
+        return $this;
+    }
+
+    /**
+     * Remove groupe
+     *
+     * @param \AppBundle\Entity\Groupe $groupe
+     */
+    public function removeGroupe(\AppBundle\Entity\Groupe $groupe)
+    {
+        $this->groupes->removeElement($groupe);
+    }
+
+    /**
+     * Get groupes
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getGroupes()
+    {
+        return $this->groupes;
+    }
+
+    public function setEmail($email)
+    {
+        $email = is_null($email) ? '' : $email;
+        parent::setEmail($email);
+        $this->setUsername($email);
+
+        return $this;
+    }
+
+    /**
+     * Set textPresentation
+     *
+     * @param string $textPresentation
+     *
+     * @return User
+     */
+    public function setTextPresentation($textPresentation)
+    {
+        $this->textPresentation = $textPresentation;
+
+        return $this;
+    }
+
+    /**
+     * Get textPresentation
+     *
+     * @return string
+     */
+    public function getTextPresentation()
+    {
+        return $this->textPresentation;
     }
 }
