@@ -1,18 +1,11 @@
-{% extends 'base.html.twig' %}
+{% extends 'membre.html.twig' %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('style/search.css') }}" rel="stylesheet" type="text/css" media="screen,projection"/>
+
+{% endblock %}
 
 {% block body %}
-
-    <header class="container-fluid header">
-        <div class="container">
-            <a href="#"><img class="logo" src="{{ asset('img/logo.png') }}" alt="Tripteam" />
-            </a>
-            <nav class="menu">
-                <a href="#">Accueil</a>
-                <a href="#about">Qu'est-ce que Tripteam</a>
-                <a href="#joinus">Se déconnecter</a>
-            </nav>
-        </div>
-    </header>
 
 
     <div class="container">
@@ -49,15 +42,9 @@
     {% if searchResult is defined and searchResult==0 %}
     dhzeuoi
     {% elseif searchResult is defined %}
-        
+
     {{ searchResult }}
     {% endif %}
 
 
-
-    <ul>
-        <li>
-            <a href="{{ path('groupe_index') }}">Back to the list</a>
-        </li>
-    </ul>
 {% endblock %}
