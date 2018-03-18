@@ -49,10 +49,18 @@ class User extends BaseUser
 
 
     /**
-     * @ORM\ManyToMany(targetEntity="Groupe", cascade={"persist"}, mappedBy="users")
-     * @ORM\JoinTable(name="users_groupes")
+     * @ORM\ManyToMany(targetEntity="Groupe", cascade={"persist"}, mappedBy="groupes")
+     * @ORM\JoinTable(name="groupes_users")
      */
     private $groupes;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="Langue", cascade={"persist"}, inversedBy="langues")
+     * @ORM\JoinTable(name="langues_users")
+     */
+    protected $langues;
+
+
 
     public function __construct()
     {
@@ -107,8 +115,6 @@ class User extends BaseUser
     {
         return $this->prenom;
     }
-
-
 
     /**
      * Set dateofbirth
