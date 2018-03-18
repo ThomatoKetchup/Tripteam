@@ -34,13 +34,13 @@ class User extends BaseUser
 
 
     /**
-     * @ORM\Column(type="date", options={"default" = "1990-01-01"})
+     * @ORM\Column(type="date", nullable=true)
      *
      */
     private $dateofbirth;
 
     /**
-     * @ORM\Column(type="text")
+     * @ORM\Column(type="text", nullable=true)
      *
      */
     private $textPresentation;
@@ -49,10 +49,16 @@ class User extends BaseUser
 
 
     /**
-     * @ORM\ManyToMany(targetEntity="Groupe", cascade={"persist"}, mappedBy="users")
-     * @ORM\JoinTable(name="users_groupes")
+     * @ORM\ManyToMany(targetEntity="Groupe", cascade={"persist"},inversedBy="users")
      */
     private $groupes;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="Langue", cascade={"persist"}, inversedBy="users")
+     */
+    protected $langues;
+
+
 
     public function __construct()
     {
@@ -107,8 +113,6 @@ class User extends BaseUser
     {
         return $this->prenom;
     }
-
-
 
     /**
      * Set dateofbirth
@@ -198,5 +202,39 @@ class User extends BaseUser
     public function getTextPresentation()
     {
         return $this->textPresentation;
+    }
+
+    /**
+     * Add langue
+     *
+     * @param \AppBundle\Entity\Langue $langue
+     *
+     * @return User
+     */
+    public function addLangue(\AppBundle\Entity\Langue $langue)
+    {
+        $this->langues[] = $langue;
+
+        return $this;
+    }
+
+    /**
+     * Remove langue
+     *
+     * @param \AppBundle\Entity\Langue $langue
+     */
+    public function removeLangue(\AppBundle\Entity\Langue $langue)
+    {
+        $this->langues->removeElement($langue);
+    }
+
+    /**
+     * Get langues
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getLangues()
+    {
+        return $this->langues;
     }
 }

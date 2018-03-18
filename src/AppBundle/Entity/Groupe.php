@@ -14,8 +14,7 @@ class Groupe
 {
 
     /**
-     * @ORM\ManyToMany(targetEntity="Groupe", cascade={"persist"}, inversedBy="groupes")
-     * @ORM\JoinTable(name="users_groupes")
+     * @ORM\ManyToMany(targetEntity="Groupe", cascade={"persist"}, mappedBy="groupes")
      */
     protected $users;
 
