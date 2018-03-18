@@ -3,6 +3,8 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Message;
+use AppBundle\Form\MessageType;
+
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
@@ -35,7 +37,7 @@ class MessageController extends Controller
     /**
      * Creates a new message entity.
      *
-     * @Route("/new", name="message_new")
+     * @Route("/user/{id}", name="message_new")
      * @Method({"GET", "POST"})
      */
     public function newAction(Request $request)
@@ -52,11 +54,12 @@ class MessageController extends Controller
             return $this->redirectToRoute('message_show', array('id' => $message->getId()));
         }
 
-        return $this->render('message/new.html.twig', array(
+        return $this->render('user/show.html.twig', array(
             'message' => $message,
-            'form' => $form->createView(),
+            'message_form' => $form->createView(),
         ));
     }
+
 
     /**
      * Finds and displays a message entity.
