@@ -34,13 +34,13 @@ class User extends BaseUser
 
 
     /**
-     * @ORM\Column(type="date", options={"default" = "1990-01-01"})
+     * @ORM\Column(type="date", nullable=true)
      *
      */
     private $dateofbirth;
 
     /**
-     * @ORM\Column(type="text")
+     * @ORM\Column(type="text", nullable=true)
      *
      */
     private $textPresentation;
