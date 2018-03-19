@@ -78,8 +78,10 @@ class UserController extends Controller
         $form = $this->createForm('AppBundle\Form\MessageType', $message);
         $form->handleRequest($request);
         $entityManager = $this->getDoctrine()->getManager();
+
+
         if ($editForm->isSubmitted() && $editForm->isValid()) {
-            $user = $editForm->getData();
+            $user = $editForm->getData(); //Demandez a expliquez cette ligne
             $entityManager->persist($user);
             $entityManager->flush();
             return $this->redirectToRoute('user_show', array('id' => $user->getId()));
