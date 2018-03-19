@@ -1,0 +1,41 @@
+.container-fluid{
+    padding-right:0px !important;
+    padding-left:0px !important;
+}
+
+.ban{
+    width:100%;
+    max-width: 100%;
+    position:relative; /*donc se place en dessous de innerbanner*/
+}
+
+.ban img{
+    width:100%;
+    height: auto;
+}
+
+.inner-banner{
+    position: absolute; /*donc se place au dessus de ban*/
+    text-align: center;
+    width: 100%;
+    top:5%;
+}
+
+.inner-banner h1{
+    font-size: 30px;
+    font-family: 'Satisfy', cursive;
+    color:white;
+    text-shadow: 1px 1px 5px black;
+}
+
+.inner-banner .main-center{
+
+}
+
+input[type="text"].form-control{
+    width: 205px !important;
+}
+
+input[type="date"].form-control{
+    width: 10px !important;
+}

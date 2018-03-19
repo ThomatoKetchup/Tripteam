@@ -25,8 +25,7 @@ class SearchController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
             $data = $form->getData();
             $em = $this->getDoctrine()->getManager();
-            $searchResult = $em->getRepository("AppBundle/Repository/GroupeRepository")->searchGroup($data);
-
+            $searchResult = $em->getRepository('AppBundle:Groupe')->searchGroup($data);
         }
 
         return $this->render('search/search.html.twig', array(
