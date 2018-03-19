@@ -1,49 +1,65 @@
 {% extends 'membre.html.twig' %}
+
 {% block stylesheets %}
     {{ parent() }}
     <link href="{{ asset('style/search.css') }}" rel="stylesheet" type="text/css" media="screen,projection"/>
-
 {% endblock %}
 
-{% block body %}
 
 
-    <div class="container">
-        <h2 id="joinus">Recherchez un groupe</h2>
-        <div class="main-center">
+{% block content %}
 
-            {{ form_start(form) }}
-
-            <div class="form-group">
-                {{ form_label(form.dateDebutG, 'Date du début de votre séjour') }}
-                {{ form_widget(form.dateDebutG, {'attr':{'class':'form-control'}}) }}
-                {{ form_errors(form.dateDebutG) }}
+    <div class="col-md-10 col-sm-8 sidebar1">
+        <section class="container-fluid banner">
+            <div class="ban">
+                <img src="{{ asset('img/search.jpg') }}" alt="banniere du site" />
             </div>
 
-            <div class="form-group">
-                {{ form_label(form.dateFinG, 'Date de la fin de votre séjour') }}
-                {{ form_widget(form.dateFinG, {'attr':{'class':'form-control'}}) }}
-                {{ form_errors(form.dateFinG) }}
+           <div class="inner-banner">
+               <h1 id="joinus">Recherchez un groupe</h1>
+               <div class="main-center">
+
+                    {{ form_start(form) }}
+
+                    <div class="form-group">
+                        {{ form_label(form.dateDebutG, 'Date du début de votre séjour') }}
+                        {{ form_widget(form.dateDebutG, {'attr': {'class':"form-control"}}) }}
+                        {{ form_errors(form.dateDebutG) }}
+                    </div>
+
+                    <div class="form-group">
+                        {{ form_label(form.dateFinG, 'Date de la fin de votre séjour') }}
+                        {{ form_widget(form.dateFinG, {'attr':{'class':"form-control"}}) }}
+                        {{ form_errors(form.dateFinG) }}
+                    </div>
+
+                    <div class="form-group">
+                        {{ form_label(form.lieuG, 'Lieu de votre séjour') }}
+                        {{ form_widget(form.lieuG, {'attr':{'class':"form-control", 'placeholder': "Entrez le lieu de votre séjour"}}) }}
+                        {{ form_errors(form.lieuG) }}
+                    </div>
+
+                    <input type="submit" value="Valider" id="button" class="btn btn-primary btn-lg btn-block login-button"/>
+
+                    {{ form_end(form) }}
+
+               </div>
+
             </div>
-
-            <div class="form-group">
-                {{ form_label(form.lieuG, 'Lieu de votre séjour') }}
-                {{ form_widget(form.lieuG, {'attr':{'class':'form-control', 'placeholder': "Entrez le lieu de votre séjour"}}) }}
-                {{ form_errors(form.lieuG) }}
-            </div>
-
-            <input type="submit" value="Valider" id="button" class="btn btn-primary btn-lg btn-block login-button"/>
-
-            {{ form_end(form) }}
-
-        </div>
+        </section>
     </div>
 
-    {% if searchResult is defined and searchResult==0 %}
-    dhzeuoi
-    {% elseif searchResult is defined %}
 
-    {{ searchResult }}
+
+
+    {% if searchResult is defined and searchResult==null %}
+    Aucun résultat ne correspond à votre recherche
+
+    {% elseif searchResult is defined %}
+        {% for x in searchResult %}
+            <li>{{ x.id }}</li>
+        {% endfor %}
+
     {% endif %}
 
 
