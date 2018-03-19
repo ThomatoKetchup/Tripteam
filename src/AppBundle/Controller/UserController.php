@@ -2,6 +2,7 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\Message;
 use AppBundle\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
@@ -68,68 +69,47 @@ class UserController extends Controller
     public function showAction(Request $request,User $user)
     {
         $deleteForm = $this->createDeleteForm($user);
+        /*Editez mon profil*/
         $editForm = $this->createForm('AppBundle\Form\UserType', $user);
         $editForm->handleRequest($request);
+
+        /*Envoyez un message*/
+        $message = new Message();
+        $form = $this->createForm('AppBundle\Form\MessageType', $message);
+        $form->handleRequest($request);
+        $entityManager = $this->getDoctrine()->getManager();
+
+
         if ($editForm->isSubmitted() && $editForm->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
+            $user = $editForm->getData(); //Demandez a expliquez cette ligne
+            $entityManager->persist($user);
+            $entityManager->flush();
             return $this->redirectToRoute('user_show', array('id' => $user->getId()));
         }
 
+        if ($form->isSubmitted() && $form->isValid()) {
+            $message->setExpediteur($this->getUser()->getId());
+            $message->setDestinataire($user->getId());
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($message);
+            $em->flush();
 
-        return $this->render('user/show.html.twig', array(
-            'user' => $user,
-            'edit_form' => $editForm->createView(),
-
-            'delete_form' => $deleteForm->createView(),
-        ));
-    }
-
-    /**
-     * Displays a form to edit an existing user entity.
-     *
-     * @Route("/{id}/edit", name="user_edit")
-     * @Method({"GET", "POST"})
-     */
-    public function editAction(Request $request, User $user)
-    {
-        $deleteForm = $this->createDeleteForm($user);
-        $editForm = $this->createForm('AppBundle\Form\UserType', $user);
-        $editForm->handleRequest($request);
-        if ($editForm->isSubmitted() && $editForm->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
-
-            return $this->redirectToRoute('user_edit', array('id' => $user->getId()));
+            return $this->redirectToRoute('message_show', array('id' => $message->getId()));
         }
 
-        return $this->render('user/edit.html.twig', array(
-            'user' => $user,
-            'edit_form' => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
-        ));
-    }
-
-    /**
-     * Displays a form to edit an existing user entity.
-     *
-     * @Route("/user/{id}", name="user_edit")
-     *
-     */
-    public function editActionProfil(Request $request, User $user)
-    {
-        $deleteForm = $this->createDeleteForm($user);
-        $editForm = $this->createForm('AppBundle\Form\UserType', $user);
-        $editForm->handleRequest($request);
-
-        if ($editForm->isSubmitted() && $editForm->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
-            }
 
         return $this->render('user/show.html.twig', array(
             'user' => $user,
             'edit_form' => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
+            'message' => $message,
+            'message_form' => $form->createView(),
         ));
     }
+
+
+
+
+
 
     /**
      * Deletes a user entity.
@@ -165,5 +145,33 @@ class UserController extends Controller
             ->setMethod('DELETE')
             ->getForm()
         ;
+    }
+
+
+    /**
+     * Creates a new message entity.
+     *
+     * @Route("/{id}", name="message_new")
+     * @Method({"GET", "POST"})
+     */
+    public function newMessageAction(Request $request)
+    {
+        $message = new Message();
+        $form = $this->createForm('AppBundle\Form\MessageType', $message);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $message->setDestinataire();
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($message);
+            $em->flush();
+
+            return $this->redirectToRoute('message_show', array('id' => $message->getId()));
+        }
+
+        return $this->render('user/show.html.twig', array(
+            'message' => $message,
+            'message_form' => $form->createView(),
+        ));
     }
 }

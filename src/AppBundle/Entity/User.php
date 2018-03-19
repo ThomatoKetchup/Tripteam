@@ -10,12 +10,9 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity
  * @ORM\Table(name="fos_user")
  */
+
 class User extends BaseUser
 {
-
-
-
-
     /**
      * @ORM\Id
      * @ORM\Column(type="integer")
@@ -47,18 +44,15 @@ class User extends BaseUser
 
 
 
-
     /**
-     * @ORM\ManyToMany(targetEntity="Groupe", cascade={"persist"}, mappedBy="groupes")
-     * @ORM\JoinTable(name="groupes_users")
+     * @ORM\ManyToMany(targetEntity="Groupe", cascade={"persist"},inversedBy="users")
      */
     private $groupes;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Langue", cascade={"persist"}, inversedBy="langues")
-     * @ORM\JoinTable(name="langues_users")
+     * @ORM\ManyToMany(targetEntity="Langue", cascade={"persist"}, inversedBy="users")
      */
-    protected $langues;
+    private $langues;
 
 
 
@@ -67,6 +61,16 @@ class User extends BaseUser
         parent::__construct();
         // your own logic
     }
+
+    /**
+         * Get id
+         *
+         * @return int
+         */
+        public function getId()
+        {
+            return $this->id;
+        }
 
     /**
      * Set nom
@@ -204,5 +208,39 @@ class User extends BaseUser
     public function getTextPresentation()
     {
         return $this->textPresentation;
+    }
+
+    /**
+     * Add langue
+     *
+     * @param \AppBundle\Entity\Langue $langue
+     *
+     * @return User
+     */
+    public function addLangue(\AppBundle\Entity\Langue $langue)
+    {
+        $this->langues[] = $langue;
+
+        return $this;
+    }
+
+    /**
+     * Remove langue
+     *
+     * @param \AppBundle\Entity\Langue $langue
+     */
+    public function removeLangue(\AppBundle\Entity\Langue $langue)
+    {
+        $this->langues->removeElement($langue);
+    }
+
+    /**
+     * Get langues
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getLangues()
+    {
+        return $this->langues;
     }
 }
