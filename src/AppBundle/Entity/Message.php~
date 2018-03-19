@@ -44,6 +44,13 @@ class Message
 
 
     /**
+     * @ORM\ManyToOne(targetEntity="User")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $userExpediteur;
+
+
+    /**
      * Get id
      *
      * @return int
@@ -69,4 +76,6 @@ class Message
     {
         return $this->contenu;
     }
+
+
 }

@@ -44,6 +44,13 @@ class Message
 
 
     /**
+     * @ORM\ManyToOne(targetEntity="User")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $userExpediteur;
+
+
+    /**
      * Get id
      *
      * @return int
@@ -71,4 +78,76 @@ class Message
     }
 
 
+
+    /**
+     * Set expediteur
+     *
+     * @param \int $expediteur
+     *
+     * @return Message
+     */
+    public function setExpediteur(\int $expediteur)
+    {
+        $this->expediteur = $expediteur;
+
+        return $this;
+    }
+
+    /**
+     * Get expediteur
+     *
+     * @return \int
+     */
+    public function getExpediteur()
+    {
+        return $this->expediteur;
+    }
+
+    /**
+     * Set destinataire
+     *
+     * @param \int $destinataire
+     *
+     * @return Message
+     */
+    public function setDestinataire(\int $destinataire)
+    {
+        $this->destinataire = $destinataire;
+
+        return $this;
+    }
+
+    /**
+     * Get destinataire
+     *
+     * @return \int
+     */
+    public function getDestinataire()
+    {
+        return $this->destinataire;
+    }
+
+    /**
+     * Set userExpediteur
+     *
+     * @param \AppBundle\Entity\User $userExpediteur
+     *
+     * @return Message
+     */
+    public function setUserExpediteur(\AppBundle\Entity\User $userExpediteur)
+    {
+        $this->userExpediteur = $userExpediteur;
+
+        return $this;
+    }
+
+    /**
+     * Get userExpediteur
+     *
+     * @return \AppBundle\Entity\User
+     */
+    public function getUserExpediteur()
+    {
+        return $this->userExpediteur;
+    }
 }
