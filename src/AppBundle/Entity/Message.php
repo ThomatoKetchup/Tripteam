@@ -24,14 +24,14 @@ class Message
     /**
      * @var int
      *
-     * @ORM\Column(name="expediteur", type="int", length=50)
+     * @ORM\Column(name="expediteur", type="integer", length=50)
      */
     private $expediteur;
 
     /**
      * @var int
      *
-     * @ORM\Column(name="idDestinataire", type="int", length=50)
+     * @ORM\Column(name="destinataire", type="integer", length=50)
      */
     private $destinataire;
 
@@ -43,11 +43,6 @@ class Message
     private $contenu;
 
 
-    /**
-     * @ORM\ManyToOne(targetEntity="User")
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $userExpediteur;
 
 
     /**
@@ -60,6 +55,61 @@ class Message
         return $this->id;
     }
 
+    /**
+     * Set expediteur
+     *
+     * @param integer $expediteur
+     *
+     * @return Message
+     */
+    public function setExpediteur($expediteur)
+    {
+        $this->expediteur = $expediteur;
+
+        return $this;
+    }
+
+    /**
+     * Get expediteur
+     *
+     * @return integer
+     */
+    public function getExpediteur()
+    {
+        return $this->expediteur;
+    }
+
+    /**
+     * Set destinataire
+     *
+     * @param integer $destinataire
+     *
+     * @return Message
+     */
+    public function setDestinataire($destinataire)
+    {
+        $this->destinataire = $destinataire;
+
+        return $this;
+    }
+
+    /**
+     * Get destinataire
+     *
+     * @return integer
+     */
+    public function getDestinataire()
+    {
+        return $this->destinataire;
+    }
+
+    /**
+     * Set contenu
+     *
+     * @param string $contenu
+     *
+     * @return Message
+     */
     public function setContenu($contenu)
     {
         $this->contenu = $contenu;
@@ -77,77 +127,4 @@ class Message
         return $this->contenu;
     }
 
-
-
-    /**
-     * Set expediteur
-     *
-     * @param \int $expediteur
-     *
-     * @return Message
-     */
-    public function setExpediteur(\int $expediteur)
-    {
-        $this->expediteur = $expediteur;
-
-        return $this;
-    }
-
-    /**
-     * Get expediteur
-     *
-     * @return \int
-     */
-    public function getExpediteur()
-    {
-        return $this->expediteur;
-    }
-
-    /**
-     * Set destinataire
-     *
-     * @param \int $destinataire
-     *
-     * @return Message
-     */
-    public function setDestinataire(\int $destinataire)
-    {
-        $this->destinataire = $destinataire;
-
-        return $this;
-    }
-
-    /**
-     * Get destinataire
-     *
-     * @return \int
-     */
-    public function getDestinataire()
-    {
-        return $this->destinataire;
-    }
-
-    /**
-     * Set userExpediteur
-     *
-     * @param \AppBundle\Entity\User $userExpediteur
-     *
-     * @return Message
-     */
-    public function setUserExpediteur(\AppBundle\Entity\User $userExpediteur)
-    {
-        $this->userExpediteur = $userExpediteur;
-
-        return $this;
-    }
-
-    /**
-     * Get userExpediteur
-     *
-     * @return \AppBundle\Entity\User
-     */
-    public function getUserExpediteur()
-    {
-        return $this->userExpediteur;
-    }
 }

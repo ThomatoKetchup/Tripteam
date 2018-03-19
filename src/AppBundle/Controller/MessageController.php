@@ -43,10 +43,14 @@ class MessageController extends Controller
     public function newAction(Request $request)
     {
         $message = new Message();
+        $message->setDestinataire(1);
+        $message->setExpediteur(2);
         $form = $this->createForm('AppBundle\Form\MessageType', $message);
         $form->handleRequest($request);
 
+
         if ($form->isSubmitted() && $form->isValid()) {
+
             $em = $this->getDoctrine()->getManager();
             $em->persist($message);
             $em->flush();
@@ -136,5 +140,12 @@ class MessageController extends Controller
             ->setMethod('DELETE')
             ->getForm()
         ;
+    }
+
+    public function addAction(Request $request){
+        $message = new Message();
+        $message-> setContenu("Bonjour");
+
+        $user = new User();
     }
 }

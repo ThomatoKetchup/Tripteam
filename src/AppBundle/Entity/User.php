@@ -52,7 +52,7 @@ class User extends BaseUser
     /**
      * @ORM\ManyToMany(targetEntity="Langue", cascade={"persist"}, inversedBy="users")
      */
-    protected $langues;
+    private $langues;
 
 
 
@@ -61,6 +61,16 @@ class User extends BaseUser
         parent::__construct();
         // your own logic
     }
+
+    /**
+         * Get id
+         *
+         * @return int
+         */
+        public function getId()
+        {
+            return $this->id;
+        }
 
     /**
      * Set nom

@@ -15,13 +15,13 @@ class UserType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            /*->add('langues',EntityType::class, array(
+            ->add('langues',EntityType::class, array(
                 'class'=>'AppBundle\Entity\Langue',
                 'choice_label'=>'nom',
                 'expanded'=>false,
-                'multiple'=>false
-            ))*/
-        ->add('text_presentation');
+                'multiple'=>true,
+            ))
+            ->add('text_presentation');
     }
 
     /**

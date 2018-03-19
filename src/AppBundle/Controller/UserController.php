@@ -77,13 +77,17 @@ class UserController extends Controller
         $message = new Message();
         $form = $this->createForm('AppBundle\Form\MessageType', $message);
         $form->handleRequest($request);
-
+        $entityManager = $this->getDoctrine()->getManager();
         if ($editForm->isSubmitted() && $editForm->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
+            $user = $editForm->getData();
+            $entityManager->persist($user);
+            $entityManager->flush();
             return $this->redirectToRoute('user_show', array('id' => $user->getId()));
         }
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $message->setExpediteur($this->getUser()->getId());
+            $message->setDestinataire($user->getId());
             $em = $this->getDoctrine()->getManager();
             $em->persist($message);
             $em->flush();
