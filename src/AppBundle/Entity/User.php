@@ -44,7 +44,6 @@ class User extends BaseUser
 
 
 
-
     /**
      * @ORM\ManyToMany(targetEntity="Groupe", cascade={"persist"},inversedBy="users")
      */

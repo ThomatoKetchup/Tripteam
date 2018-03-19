@@ -141,6 +141,7 @@ class UserController extends Controller
         ;
     }
 
+
     /**
      * Creates a new message entity.
      *
@@ -154,6 +155,7 @@ class UserController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $message->setDestinataire();
             $em = $this->getDoctrine()->getManager();
             $em->persist($message);
             $em->flush();
