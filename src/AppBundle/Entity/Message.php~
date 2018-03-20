@@ -21,19 +21,6 @@ class Message
      */
     private $id;
 
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="expediteur", type="integer", length=50)
-     */
-    private $expediteur;
-
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="destinataire", type="integer", length=50)
-     */
-    private $destinataire;
 
     /**
      * @var string
@@ -44,9 +31,19 @@ class Message
 
 
     /**
+
      * @ORM\ManyToOne(targetEntity="User")
      * @ORM\JoinColumn(nullable=false)
      */
+
+    private $userDestinataire;
+
+    /**
+
+     * @ORM\ManyToOne(targetEntity="User")
+     * @ORM\JoinColumn(nullable=false)
+     */
+
     private $userExpediteur;
 
 
@@ -60,53 +57,6 @@ class Message
         return $this->id;
     }
 
-    /**
-     * Set expediteur
-     *
-     * @param integer $expediteur
-     *
-     * @return Message
-     */
-    public function setExpediteur($expediteur)
-    {
-        $this->expediteur = $expediteur;
-
-        return $this;
-    }
-
-    /**
-     * Get expediteur
-     *
-     * @return integer
-     */
-    public function getExpediteur()
-    {
-        return $this->expediteur;
-    }
-
-    /**
-     * Set destinataire
-     *
-     * @param integer $destinataire
-     *
-     * @return Message
-     */
-    public function setDestinataire($destinataire)
-    {
-        $this->destinataire = $destinataire;
-
-        return $this;
-    }
-
-    /**
-     * Get destinataire
-     *
-     * @return integer
-     */
-    public function getDestinataire()
-    {
-        return $this->destinataire;
-    }
 
     /**
      * Set contenu
@@ -133,26 +83,26 @@ class Message
     }
 
     /**
-     * Set userExpediteur
+     * Set userDestinataire
      *
-     * @param \AppBundle\Entity\User $userExpediteur
+     * @param \AppBundle\Entity\User $userDestinataire
      *
      * @return Message
      */
-    public function setUserExpediteur(\AppBundle\Entity\User $userExpediteur)
+    public function setUserDestinataire(\AppBundle\Entity\User $userDestinataire)
     {
-        $this->userExpediteur = $userExpediteur;
+        $this->userDestinataire = $userDestinataire;
 
         return $this;
     }
 
     /**
-     * Get userExpediteur
+     * Get userDestinataire
      *
      * @return \AppBundle\Entity\User
      */
-    public function getUserExpediteur()
+    public function getUserDestinataire()
     {
-        return $this->userExpediteur;
+        return $this->userDestinataire;
     }
 }
