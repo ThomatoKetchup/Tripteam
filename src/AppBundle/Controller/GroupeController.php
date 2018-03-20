@@ -134,4 +134,19 @@ class GroupeController extends Controller
             ->getForm()
         ;
     }
+
+    /**
+     * Ajoute l'utilisateur courant au groupe passé en paramètre
+     *
+     * @Route("/", name="group_add_user")
+     * @Method({"GET", "POST"})
+     */
+    private function addUserAction(Groupe $groupe){
+        $groupe->addUser($this->getUser());
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($groupe);
+        $em->flush();
+
+        return $this->render('groupe/index.html.twig');
+    }
 }

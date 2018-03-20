@@ -14,8 +14,8 @@ class GroupeRepository extends \Doctrine\ORM\EntityRepository
     {
         $queryBuilder = $this->createQueryBuilder('groupe')
             ->select('groupe')
-            ->where('groupe.dateDebutG=?1')
-            ->andWhere('groupe.dateFinG=?2')
+            ->where('groupe.dateDebutG<=?1')
+            ->andWhere('groupe.dateFinG>=?2')
             ->andWhere('groupe.lieuG=?3')
             ->setParameters(array(1 => $data['dateDebutG'], 2 => $data['dateFinG'], 3 => $data['lieuG']));
 

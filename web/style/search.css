@@ -28,10 +28,6 @@
     text-shadow: 1px 1px 5px black;
 }
 
-.inner-banner .main-center{
-
-}
-
 #search_dateDebutG{
     width: 178px;
     display: inline-block;
@@ -45,19 +41,21 @@
 }
 
 #search_lieuG{
-    width: 204px !important;
+    width: 204px;
     display: inline-block;
     margin-left: 30px;
 }
 
 #button{
-    width: 150px;
+    width: 120px;
     height: 40px;
-    display: inline-block;
-    margin-left: 70px;
+    margin-left: 400px;
+    background-color: #f1ab53;
 }
 
 label{
+    font-family: 'Comic Sans MS', cursive;
+    font-size: 13px;
     display:inline-block;
     margin-left: 0px;
     width:200px;
@@ -66,8 +64,28 @@ label{
 form {
     width: 700px;
     margin-left: 100px;
-    margin-top: 20px;
+    margin-top: 5px;
     line-height:15px;
     font-family: Arial, sans-serif;
     font-size: 13px;
 }
+
+table{
+    width: 50%;
+    margin-left: 30px;
+}
+
+th{
+    height: 50px;
+    font-size: 20px;
+    font-family: 'Satisfy', cursive;
+    color: #1c7430;
+}
+
+td{
+    height: 30px;
+    font-size: 15px;
+    font-family: 'Comic Sans MS', cursive;
+    color: black;
+}
+

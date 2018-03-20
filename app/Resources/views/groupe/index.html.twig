@@ -1,45 +1,27 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Groupes list</h1>
 
     <table>
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Nbmembres</th>
-                <th>Datedebutg</th>
-                <th>Datefing</th>
-                <th>Lieug</th>
-                <th>Actions</th>
+                <th>Nom du groupe</th>
+                <th>Date du début du séjour</th>
+                <th>Date de fin du séjour</th>
+                <th>Lieu du séjour</th>
             </tr>
         </thead>
         <tbody>
         {% for groupe in groupes %}
             <tr>
-                <td><a href="{{ path('groupe_show', { 'id': groupe.id }) }}">{{ groupe.id }}</a></td>
-                <td>{{ groupe.nbMembres }}</td>
+                <td>{{ groupe.nomG }}</td>
                 <td>{% if groupe.dateDebutG %}{{ groupe.dateDebutG|date('Y-m-d') }}{% endif %}</td>
                 <td>{% if groupe.dateFinG %}{{ groupe.dateFinG|date('Y-m-d') }}{% endif %}</td>
                 <td>{{ groupe.lieuG }}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('groupe_show', { 'id': groupe.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('groupe_edit', { 'id': groupe.id }) }}">edit</a>
-                        </li>
-                    </ul>
-                </td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <ul>
-        <li>
-            <a href="{{ path('groupe_new') }}">Create a new groupe</a>
-        </li>
-    </ul>
+
 {% endblock %}
