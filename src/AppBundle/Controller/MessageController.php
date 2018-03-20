@@ -26,10 +26,25 @@ class MessageController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $messages = $em->getRepository('AppBundle:Message')->findAll();
+        $sendMessages = $em->getRepository('AppBundle:Message')->findBy(
+
+            array('userExpediteur' => $this->getUser()),
+            $orderBy = null,
+                $limit  = null,
+                $offset = null
+        );;
+
+        $receivedMessages = $em->getRepository('AppBundle:Message')->findBy(
+
+            array('userDestinataire' => $this->getUser()),
+            $orderBy = null,
+            $limit  = null,
+            $offset = null
+        );;
 
         return $this->render('message/index.html.twig', array(
-            'messages' => $messages,
+            'sendMessages' => $sendMessages,
+            'receivedMessages'=> $receivedMessages,
         ));
     }
 
