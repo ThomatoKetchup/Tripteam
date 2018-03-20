@@ -27,7 +27,6 @@ class MessageController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $sendMessages = $em->getRepository('AppBundle:Message')->findBy(
-
             array('userExpediteur' => $this->getUser()),
             $orderBy = null,
                 $limit  = null,
@@ -35,7 +34,6 @@ class MessageController extends Controller
         );;
 
         $receivedMessages = $em->getRepository('AppBundle:Message')->findBy(
-
             array('userDestinataire' => $this->getUser()),
             $orderBy = null,
             $limit  = null,
