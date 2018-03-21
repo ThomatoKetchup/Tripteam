@@ -18,7 +18,11 @@
                 <td>{% if groupe.dateDebutG %}{{ groupe.dateDebutG|date('Y-m-d') }}{% endif %}</td>
                 <td>{% if groupe.dateFinG %}{{ groupe.dateFinG|date('Y-m-d') }}{% endif %}</td>
                 <td>{{ groupe.lieuG }}</td>
+                <td><a href="{{ path('group_add_user', { 'id': groupe.id }) }}">Rejoindre ce groupe</a></td>
+
             </tr>
+
+
         {% endfor %}
         </tbody>
     </table>

@@ -141,7 +141,7 @@ class GroupeController extends Controller
      * @Route("/", name="group_add_user")
      * @Method({"GET", "POST"})
      */
-    private function addUserAction(Groupe $groupe){
+    private function addUserAction(Groupe $groupe, User $user){
         $groupe->addUser($this->getUser());
         $em = $this->getDoctrine()->getManager();
         $em->persist($groupe);
