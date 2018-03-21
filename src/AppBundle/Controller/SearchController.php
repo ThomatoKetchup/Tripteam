@@ -20,6 +20,9 @@ class SearchController extends Controller
         $form = $this->createForm('AppBundle\Form\SearchType');
         $form->handleRequest($request);
 
+        $em = $this->getDoctrine()->getManager();
+        $groupes = $em->getRepository('AppBundle:Groupe')->findAll();
+
         $searchResult=0;
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -30,6 +33,7 @@ class SearchController extends Controller
 
         return $this->render('search/search.html.twig', array(
             'form' => $form->createView(),
-            'searchResult' => $searchResult));
+            'searchResult' => $searchResult,
+            'groupes' => $groupes));
     }
 }

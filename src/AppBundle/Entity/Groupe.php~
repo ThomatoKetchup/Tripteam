@@ -58,6 +58,13 @@ class Groupe
      */
     private $lieuG;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nomG", type="string", length=100, unique=true)
+     */
+    private $nomG;
+
 
     /**
      * Get id
@@ -164,6 +171,7 @@ class Groupe
     {
         return $this->lieuG;
     }
+
     /**
      * Constructor
      */

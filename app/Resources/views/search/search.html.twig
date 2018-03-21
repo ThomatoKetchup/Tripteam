@@ -11,14 +11,13 @@
 {% block content %}
 
     <div class="col-md-10 col-sm-8 sidebar1">
-        <section class="container-fluid banner">
-            <div class="ban">
-                <img src="{{ asset('img/search.jpg') }}" alt="banniere du site" />
+        <section class="container-fluid">
+            <div class="col-md-10 col-sm-8 ban">
+                <img src="{{ asset('img/search.jpg') }}" />
             </div>
 
-           <div class="inner-banner">
+           <div class="col-md-10 col-sm-8 inner-banner">
                <h1 id="joinus">Recherchez un groupe</h1>
-               <div class="main-center">
 
                     {{ form_start(form) }}
 
@@ -43,23 +42,58 @@
                     <input type="submit" value="Valider" id="button" class="btn btn-primary btn-lg btn-block login-button"/>
 
                     {{ form_end(form) }}
-
-               </div>
-
             </div>
         </section>
     </div>
 
 
 
-
     {% if searchResult is defined and searchResult==null %}
-    Aucun résultat ne correspond à votre recherche
+        <div class="col-md-10 col-sm-8 table">
+        <table>
+            <thead>
+            <tr>
+                <th>Nom du groupe</th>
+                <th>Date du début du séjour</th>
+                <th>Date de fin du séjour</th>
+                <th>Lieu du séjour</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for groupe in groupes %}
+                <tr>
+                    <td>{{ groupe.nomG }}</td>
+                    <td>{% if groupe.dateDebutG %}{{ groupe.dateDebutG|date('Y-m-d') }}{% endif %}</td>
+                    <td>{% if groupe.dateFinG %}{{ groupe.dateFinG|date('Y-m-d') }}{% endif %}</td>
+                    <td>{{ groupe.lieuG }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        </div>
 
     {% elseif searchResult is defined %}
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Nom du groupe</th>
+                    <th>Date du début du séjour</th>
+                    <th>Date de fin du séjour</th>
+                    <th>Lieu du séjour</th>
+                </tr>
+            </thead>
+            <tbody>
         {% for x in searchResult %}
-            <li>{{ x.id }}</li>
+            <tr>
+                <td>{{ x.nomG }}</td>
+                <td>{% if x.dateDebutG %}{{ x.dateDebutG|date('Y-m-d') }}{% endif %}</td>
+                <td>{% if x.dateFinG %}{{ x.dateFinG|date('Y-m-d') }}{% endif %}</td>
+                <td>{{ x.lieuG }}</td>
+            </tr>
         {% endfor %}
+            </tbody>
+        </table>
 
     {% endif %}
 

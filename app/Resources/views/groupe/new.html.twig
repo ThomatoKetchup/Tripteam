@@ -1,5 +1,6 @@
 {% extends 'base.html.twig' %}
 
+
 {% block body %}
 
     <header class="container-fluid header">
@@ -39,6 +40,14 @@
                 {{ form_errors(form.lieuG) }}
             </div>
 
+            <div class="form-group">
+                {{ form_label(form.nomG, 'Nom de votre groupe') }}
+                {{ form_widget(form.nomG, {'attr':{'class':'form-control', 'placeholder': "Entrez le nom de votre groupe"}}) }}
+                {% if form_errors(form.nomG) is not empty %}
+                    <div class="alert alert-danger" >Le nom du groupe est déjà utilisé</div>
+                {% endif %}
+            </div>
+
              <input type="submit" value="Valider" id="button" class="btn btn-primary btn-lg btn-block login-button"/>
 
             {{ form_end(form) }}
@@ -52,4 +61,5 @@
             <a href="{{ path('groupe_index') }}">Back to the list</a>
         </li>
     </ul>
+
 {% endblock %}

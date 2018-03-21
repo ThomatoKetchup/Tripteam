@@ -1,5 +1,4 @@
 <?php
-// src/AppBundle/Entity/User.php
 
 namespace AppBundle\Entity;
 
@@ -63,6 +62,7 @@ class User extends BaseUser
     }
 
     /**
+<<<<<<< HEAD
          * Get id
          *
          * @return int
@@ -71,6 +71,16 @@ class User extends BaseUser
         {
             return $this->id;
         }
+=======
+     * Get id
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+>>>>>>> de271d91bf0bd0dc95ccf119f3d006ece2f14e2a
 
     /**
      * Set nom
