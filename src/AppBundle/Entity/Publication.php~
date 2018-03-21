@@ -49,7 +49,7 @@ class Publication
     /**
      * @var int
      *
-     * @ORM\Column(name="idGoupe", type="integer")
+     * @ORM\Column(name="idGoupe", type="int")
      */
     private $idGroupe;
 
@@ -141,28 +141,5 @@ class Publication
         $this ->datePublication = new \DateTime('now');
 
     }
-
-    /**
-     * Set idGroupe
-     *
-     * @param \int $idGroupe
-     *
-     * @return Publication
-     */
-    public function setIdGroupe(\int $idGroupe)
-    {
-        $this->idGroupe = $idGroupe;
-
-        return $this;
-    }
-
-    /**
-     * Get idGroupe
-     *
-     * @return \int
-     */
-    public function getIdGroupe()
-    {
-        return $this->idGroupe;
-    }
 }
+

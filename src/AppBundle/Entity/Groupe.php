@@ -16,6 +16,9 @@ class Groupe
     /**
      * @ORM\ManyToMany(targetEntity="Groupe", cascade={"persist"}, mappedBy="groupes")
      */
+    /**
+     * @ORM\OneToMany(targetEntity="Publication", mappedBy="groupe")
+     */
     protected $users;
 
     /**

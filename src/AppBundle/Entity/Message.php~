@@ -43,11 +43,6 @@ class Message
     private $contenu;
 
 
-    /**
-     * @ORM\ManyToOne(targetEntity="User")
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $userExpediteur;
 
 
     /**
@@ -132,27 +127,4 @@ class Message
         return $this->contenu;
     }
 
-    /**
-     * Set userExpediteur
-     *
-     * @param \AppBundle\Entity\User $userExpediteur
-     *
-     * @return Message
-     */
-    public function setUserExpediteur(\AppBundle\Entity\User $userExpediteur)
-    {
-        $this->userExpediteur = $userExpediteur;
-
-        return $this;
-    }
-
-    /**
-     * Get userExpediteur
-     *
-     * @return \AppBundle\Entity\User
-     */
-    public function getUserExpediteur()
-    {
-        return $this->userExpediteur;
-    }
 }
