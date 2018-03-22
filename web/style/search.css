@@ -1,9 +1,10 @@
-.container-fluid{
-    padding-right:0px !important;
-    padding-left:0px !important;
+.banniere{
+    padding: 0px;
+    min-height: 100%;
 }
 
 .ban{
+    padding: 0px;
     width:100%;
     max-width: 100%;
     position:relative; /*donc se place en dessous de innerbanner*/
@@ -17,7 +18,7 @@
 .inner-banner{
     position: absolute; /*donc se place au dessus de ban*/
     text-align: center;
-    width: 100%;
+    width:100%;
     top:5%;
 }
 
@@ -31,40 +32,37 @@
 #search_dateDebutG{
     width: 178px;
     display: inline-block;
-    margin-left: 30px;
 }
 
 #search_dateFinG{
     width: 178px;
     display: inline-block;
-    margin-left: 30px;
 }
 
 #search_lieuG{
     width: 204px;
     display: inline-block;
-    margin-left: 30px;
 }
 
 #button{
     width: 120px;
     height: 40px;
-    margin-left: 400px;
     background-color: #f1ab53;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 label{
     font-family: 'Comic Sans MS', cursive;
     font-size: 13px;
     display:inline-block;
-    margin-left: 0px;
     width:200px;
 }
 
 form {
-    width: 700px;
-    margin-left: 100px;
-    margin-top: 5px;
+    width: 100px;
+    margin-left: auto; /*100*/
+    margin-right: auto; /*5*/
     line-height:15px;
     font-family: Arial, sans-serif;
     font-size: 13px;
@@ -89,3 +87,6 @@ td{
     color: black;
 }
 
+.flash-notice{
+    color:red;
+}

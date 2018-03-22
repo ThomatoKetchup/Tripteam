@@ -31,9 +31,14 @@ class SearchController extends Controller
             $searchResult = $em->getRepository('AppBundle:Groupe')->searchGroup($data);
         }
 
+        if($searchResult==null && $form->isSubmitted() && $form->isValid()){
+            $this->addFlash("bat-alarm", "Aucun résultat ne correspond à votre recherche");
+        }
+
         return $this->render('search/search.html.twig', array(
             'form' => $form->createView(),
             'searchResult' => $searchResult,
             'groupes' => $groupes));
     }
+
 }
