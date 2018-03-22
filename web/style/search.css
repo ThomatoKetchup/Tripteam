@@ -12,19 +12,20 @@
 
 .ban img{
     width:100%;
-    height: auto;
+    height: 420px;
 }
 
 .inner-banner{
     position: absolute; /*donc se place au dessus de ban*/
-    text-align: center;
+    margin-left: 200px;
     width:100%;
     top:5%;
 }
 
 .inner-banner h1{
-    font-size: 30px;
+    font-size: 50px;
     font-family: 'Satisfy', cursive;
+    margin-left: 500px;
     color:white;
     text-shadow: 1px 1px 5px black;
 }
@@ -32,6 +33,7 @@
 #search_dateDebutG{
     width: 178px;
     display: inline-block;
+
 }
 
 #search_dateFinG{
@@ -57,6 +59,7 @@ label{
     font-size: 13px;
     display:inline-block;
     width:200px;
+    color:#FAFAD2;
 }
 
 form {
@@ -70,7 +73,7 @@ form {
 
 table{
     width: 50%;
-    margin-left: 30px;
+    margin-left: 225px;
 }
 
 th{
