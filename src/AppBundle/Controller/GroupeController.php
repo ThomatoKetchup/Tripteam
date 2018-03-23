@@ -23,9 +23,15 @@ class GroupeController extends Controller
      */
     public function indexAction()
     {
-        $em = $this->getDoctrine()->getManager();
-
-        $groupes = $em->getRepository('AppBundle:Groupe')->findAll();
+        $groupes = $this->getUser()->getGroupes();
+        /*$em = $this->getDoctrine()->getManager();
+        $users=$this->getUser();
+        $groupes = $em->getRepository('AppBundle:Groupe')->findBy(
+            array('userExpediteur' => ->getUser()),
+            $orderBy = null,
+            $limit  = null,
+            $offset = null
+        );;;*/
 
         return $this->render('groupe/index.html.twig', array(
             'groupes' => $groupes,
@@ -135,18 +141,21 @@ class GroupeController extends Controller
         ;
     }
 
+
     /**
      * Ajoute l'utilisateur courant au groupe passé en paramètre
      *
-     * @Route("/", name="group_add_user")
-     * @Method({"GET", "POST"})
+     * @Route("/{id}", name="group_add_user")
+     * @Method({"GET"})
      */
-    private function addUserAction(Groupe $groupe, User $user){
+    public function addUserAction(Groupe $groupe){
         $groupe->addUser($this->getUser());
+
+        $this->getUser()->addGroupe($groupe);
         $em = $this->getDoctrine()->getManager();
         $em->persist($groupe);
         $em->flush();
-
-        return $this->render('groupe/index.html.twig');
+        return $this->render('membre.html.twig');
     }
+
 }

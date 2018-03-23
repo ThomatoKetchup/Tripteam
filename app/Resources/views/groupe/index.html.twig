@@ -1,31 +1,38 @@
-{% extends 'base.html.twig' %}
+{% extends 'membre.html.twig' %}
 
-{% block body %}
+{% block content %}
 
-    <table>
-        <thead>
-            <tr>
-                <th>Nom du groupe</th>
-                <th>Date du début du séjour</th>
-                <th>Date de fin du séjour</th>
-                <th>Lieu du séjour</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for groupe in groupes %}
-            <tr>
-                <td>{{ groupe.nomG }}</td>
-                <td>{% if groupe.dateDebutG %}{{ groupe.dateDebutG|date('Y-m-d') }}{% endif %}</td>
-                <td>{% if groupe.dateFinG %}{{ groupe.dateFinG|date('Y-m-d') }}{% endif %}</td>
-                <td>{{ groupe.lieuG }}</td>
-                <td><a href="{{ path('group_add_user', { 'id': groupe.id }) }}">Rejoindre ce groupe</a></td>
+    <div class="col-md-8 col-md-offset-1 col-sm-8">
+        <div class="tab-content">
+            <div class="tab-pane active" id="inbox">
 
-            </tr>
+                <div class="container">
+                    <div class="content-container clearfix">
+                        <div class="col-md-12">
+                            <h1 class="content-title">Mes groupes</h1>
+
+                            <input type="search" placeholder="Rechercher un groupe" class="form-control mail-search" />
 
 
-        {% endfor %}
-        </tbody>
-    </table>
+                            <ul class="mail-list">
+                                {% for groupe in groupes %}
+                                    <li>
+                                        <a href="{{ path('groupe_show', { 'id': groupe.id }) }}">
+                                            <span class="mail-message-preview">{{ groupe.nomG }}</span>
+                                        </a>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    </body>
+
+
 
 
 {% endblock %}

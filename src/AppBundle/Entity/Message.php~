@@ -30,14 +30,11 @@ class Message
     private $contenu;
 
 
-<<<<<<< HEAD
-=======
     /**
 
      * @ORM\ManyToOne(targetEntity="User")
      * @ORM\JoinColumn(nullable=false)
      */
->>>>>>> de271d91bf0bd0dc95ccf119f3d006ece2f14e2a
 
     private $userDestinataire;
 
@@ -85,8 +82,6 @@ class Message
         return $this->contenu;
     }
 
-<<<<<<< HEAD
-=======
     /**
      * Set userDestinataire
      *
@@ -110,5 +105,28 @@ class Message
     {
         return $this->userDestinataire;
     }
->>>>>>> de271d91bf0bd0dc95ccf119f3d006ece2f14e2a
+
+    /**
+     * Set userExpediteur
+     *
+     * @param \AppBundle\Entity\User $userExpediteur
+     *
+     * @return Message
+     */
+    public function setUserExpediteur(\AppBundle\Entity\User $userExpediteur)
+    {
+        $this->userExpediteur = $userExpediteur;
+
+        return $this;
+    }
+
+    /**
+     * Get userExpediteur
+     *
+     * @return \AppBundle\Entity\User
+     */
+    public function getUserExpediteur()
+    {
+        return $this->userExpediteur;
+    }
 }

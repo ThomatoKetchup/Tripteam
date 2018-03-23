@@ -3,7 +3,9 @@
 namespace AppBundle\Entity;
 
 use FOS\UserBundle\Model\User as BaseUser;
+
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity
@@ -52,6 +54,14 @@ class User extends BaseUser
      * @ORM\ManyToMany(targetEntity="Langue", cascade={"persist"}, inversedBy="users")
      */
     private $langues;
+
+    /**
+     * @ORM\Column(type="string")
+     *
+     * @Assert\NotBlank(message="Please, upload the product brochure as a PDF file.")
+     * @Assert\File(mimeTypes={ "image/jpeg", "image/png", "image/jpg",})
+     */
+    private $brochure;
 
 
 
@@ -241,5 +251,30 @@ class User extends BaseUser
     public function getLangues()
     {
         return $this->langues;
+    }
+
+
+    /**
+     * Set brochure
+     *
+     * @param string $brochure
+     *
+     * @return User
+     */
+    public function setBrochure($brochure)
+    {
+        $this->brochure = $brochure;
+
+        return $this;
+    }
+
+    /**
+     * Get brochure
+     *
+     * @return string
+     */
+    public function getBrochure()
+    {
+        return $this->brochure;
     }
 }

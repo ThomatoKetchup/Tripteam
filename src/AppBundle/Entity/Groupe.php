@@ -13,13 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
 class Groupe
 {
 
-    /**
-     * @ORM\ManyToMany(targetEntity="Groupe", cascade={"persist"}, mappedBy="groupes")
-     */
-    /**
-     * @ORM\OneToMany(targetEntity="Publication", mappedBy="groupe")
-     */
-    protected $users;
+
 
     /**
      * @var int
@@ -67,10 +61,17 @@ class Groupe
 
 
     /**
+     * @ORM\ManyToMany(targetEntity="User", cascade={"persist"}, mappedBy="groupes")
+     */
+    protected $users;
+
+
+    /**
      * Get id
      *
      * @return int
      */
+
     public function getId()
     {
         return $this->id;
@@ -181,6 +182,31 @@ class Groupe
     }
 
     /**
+     * Set nomG
+     *
+     * @param string $nomG
+     *
+     * @return Groupe
+     */
+    public function setNomG($nomG)
+    {
+        $this->nomG = $nomG;
+
+        return $this;
+    }
+
+    /**
+     * Get nomG
+     *
+     * @return string
+     */
+    public function getNomG()
+    {
+        return $this->nomG;
+    }
+
+
+    /**
      * Add user
      *
      * @param \AppBundle\Entity\User $user
@@ -212,29 +238,5 @@ class Groupe
     public function getUsers()
     {
         return $this->users;
-    }
-
-    /**
-     * Set nomG
-     *
-     * @param string $nomG
-     *
-     * @return Groupe
-     */
-    public function setNomG($nomG)
-    {
-        $this->nomG = $nomG;
-
-        return $this;
-    }
-
-    /**
-     * Get nomG
-     *
-     * @return string
-     */
-    public function getNomG()
-    {
-        return $this->nomG;
     }
 }

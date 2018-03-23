@@ -14,8 +14,7 @@
         <div class="row">
             <div class="user-image">
                 <div class="logo">
-                    <img src="http://lorempixel.com/output/people-q-g-64-64-1.jpg" class="img-responsive center-block logoimg"
-                         alt="Logo"></div>
+                    <img src="{{ asset('user/' ~ user.brochure) }}" class="img-responsive center-block logoimg" alt="Photo de profil"></div>
                 <h2>{{ user.prenom }} {{ user.nom |  capitalize }}</h2>
             </div>
 
@@ -68,6 +67,8 @@
                             <div class="modal-body">
                                 {{ form_start(edit_form) }}
                                 {{ form_widget(edit_form) }}
+                                {{ form_row(edit_form.brochure) }}
+
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

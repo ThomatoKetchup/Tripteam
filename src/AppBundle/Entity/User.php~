@@ -3,7 +3,9 @@
 namespace AppBundle\Entity;
 
 use FOS\UserBundle\Model\User as BaseUser;
+
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity
@@ -53,6 +55,14 @@ class User extends BaseUser
      */
     private $langues;
 
+    /**
+     * @ORM\Column(type="string")
+     *
+     * @Assert\NotBlank(message="Please, upload the product brochure as a PDF file.")
+     * @Assert\File(mimeTypes={ "image/jpeg" })
+     */
+    private $brochure;
+
 
 
     public function __construct()
@@ -62,16 +72,6 @@ class User extends BaseUser
     }
 
     /**
-<<<<<<< HEAD
-         * Get id
-         *
-         * @return int
-         */
-        public function getId()
-        {
-            return $this->id;
-        }
-=======
      * Get id
      *
      * @return int
@@ -80,7 +80,6 @@ class User extends BaseUser
     {
         return $this->id;
     }
->>>>>>> de271d91bf0bd0dc95ccf119f3d006ece2f14e2a
 
     /**
      * Set nom
@@ -252,5 +251,30 @@ class User extends BaseUser
     public function getLangues()
     {
         return $this->langues;
+    }
+
+
+    /**
+     * Set brochure
+     *
+     * @param string $brochure
+     *
+     * @return User
+     */
+    public function setBrochure($brochure)
+    {
+        $this->brochure = $brochure;
+
+        return $this;
+    }
+
+    /**
+     * Get brochure
+     *
+     * @return string
+     */
+    public function getBrochure()
+    {
+        return $this->brochure;
     }
 }
