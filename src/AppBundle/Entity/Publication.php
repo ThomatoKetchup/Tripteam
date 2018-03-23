@@ -46,12 +46,12 @@ class Publication
      */
     private $image;
 
+
     /**
-     * @var int
-     *
-     * @ORM\Column(name="idGoupe", type="integer")
+     * @ORM\ManyToOne(targetEntity="Groupe")
+     * @ORM\JoinColumn(nullable=false)
      */
-    private $idGroupe;
+    private $groupe;
 
 
     /**
@@ -142,27 +142,28 @@ class Publication
 
     }
 
+
     /**
-     * Set idGroupe
+     * Set groupe
      *
-     * @param \int $idGroupe
+     * @param \AppBundle\Entity\Groupe $groupe
      *
      * @return Publication
      */
-    public function setIdGroupe(\int $idGroupe)
+    public function setGroupe(\AppBundle\Entity\Groupe $groupe)
     {
-        $this->idGroupe = $idGroupe;
+        $this->groupe = $groupe;
 
         return $this;
     }
 
     /**
-     * Get idGroupe
+     * Get groupe
      *
-     * @return \int
+     * @return \AppBundle\Entity\Groupe
      */
-    public function getIdGroupe()
+    public function getGroupe()
     {
-        return $this->idGroupe;
+        return $this->groupe;
     }
 }

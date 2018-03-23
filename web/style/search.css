@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 
+=======
+>>>>>>> 62c3abb5e542667cace46e0b2b0d8e1d2ea5475d
 .searchbar{
     margin-top: 35px;
 }
@@ -44,7 +47,10 @@
     border-radius:0;
     box-shadow:none;
     height:auto;
+<<<<<<< HEAD
 
+=======
+>>>>>>> 62c3abb5e542667cace46e0b2b0d8e1d2ea5475d
 .banniere{
     padding: 0px;
     min-height: 100%;
@@ -121,7 +127,10 @@ form {
 table{
     width: 50%;
     margin-left: 225px;
+<<<<<<< HEAD
 
+=======
+>>>>>>> 62c3abb5e542667cace46e0b2b0d8e1d2ea5475d
 }
 .float-label{
     font-size:10px;
@@ -156,7 +165,10 @@ h1.content-title{
 }
 /*mail list*/
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 62c3abb5e542667cace46e0b2b0d8e1d2ea5475d
 ul.mail-list{
     padding:0;
     margin:0;
@@ -192,7 +204,6 @@ ul.mail-list li span.mail-message-preview{
 .mail-search{
     border-bottom-color:#7FBCC9!important;
 }
-=======
 .flash-notice{
     color:red;
 }
