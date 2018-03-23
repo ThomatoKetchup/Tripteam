@@ -17,6 +17,7 @@
                             <ul class="mail-list">
                                 {% for groupe in groupes %}
                                     <li>
+
                                         <a href="{{ path('groupe_show', { 'id': groupe.id }) }}">
                                             <span class="mail-message-preview">{{ groupe.nomG }}</span>
                                         </a>

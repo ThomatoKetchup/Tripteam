@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 .searchbar{
     margin-top: 35px;
 }
@@ -44,7 +43,6 @@
     border-radius:0;
     box-shadow:none;
     height:auto;
-=======
 .banniere{
     padding: 0px;
     min-height: 100%;
@@ -121,7 +119,6 @@ form {
 table{
     width: 50%;
     margin-left: 225px;
->>>>>>> dd1def37088d1a2eadc9ee2b1aeb274f91d2b6f2
 }
 .float-label{
     font-size:10px;
@@ -156,7 +153,6 @@ h1.content-title{
 }
 /*mail list*/
 
-<<<<<<< HEAD
 ul.mail-list{
     padding:0;
     margin:0;
@@ -192,7 +188,6 @@ ul.mail-list li span.mail-message-preview{
 .mail-search{
     border-bottom-color:#7FBCC9!important;
 }
-=======
 .flash-notice{
     color:red;
 }

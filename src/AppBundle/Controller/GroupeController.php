@@ -2,6 +2,7 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\Publication;
 use AppBundle\Entity\Groupe;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
@@ -68,15 +69,31 @@ class GroupeController extends Controller
      * Finds and displays a groupe entity.
      *
      * @Route("/{id}", name="groupe_show")
-     * @Method("GET")
+     * @Method({"GET", "POST"})
      */
-    public function showAction(Groupe $groupe)
+    public function showAction(Request $request,Groupe $groupe)
     {
-        $deleteForm = $this->createDeleteForm($groupe);
+        $publication = new Publication();
+        $form = $this->createForm('AppBundle\Form\PublicationType', $publication);
+        $form->handleRequest($request);
 
+        if ($form->isSubmitted() && $form->isValid()) {
+            $publication->setGroupe($groupe);
+            $publication->setDatePublication('2000-01-01');
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($publication);
+            $em->flush();
+
+            return $this->redirectToRoute('publication_show', array('id' => $publication->getId()));
+        }
+
+        //$groupes = $this->getUser()->getGroupes();
+        //dump($this->getGroupe());die;
+        $users = $groupe->getUsers();
         return $this->render('groupe/show.html.twig', array(
+            'form' => $form->createView(),
             'groupe' => $groupe,
-            'delete_form' => $deleteForm->createView(),
+            'users' => $users,
         ));
     }
 
