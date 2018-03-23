@@ -14,10 +14,28 @@ class GroupeRepository extends \Doctrine\ORM\EntityRepository
     {
         $queryBuilder = $this->createQueryBuilder('groupe')
             ->select('groupe')
-            ->where('groupe.dateDebutG<=?1')
-            ->andWhere('groupe.dateFinG>=?2')
-            ->andWhere('groupe.lieuG=?3')
-            ->setParameters(array(1 => $data['dateDebutG'], 2 => $data['dateFinG'], 3 => $data['lieuG']));
+            ->where('groupe.lieuG=?3');
+
+            $andModule = $queryBuilder->expr()->andX();
+            $andModule->add($queryBuilder->expr()->gte('groupe.dateDebutG', '?1'));
+            $andModule->add($queryBuilder->expr()->lte('groupe.dateFinG', '?2'));
+
+            $andModule2 = $queryBuilder->expr()->andX();
+            $andModule2->add($queryBuilder->expr()->lte('groupe.dateDebutG', '?1'));
+            $andModule2->add($queryBuilder->expr()->gte('groupe.dateFinG', '?1'));
+
+            $andModule3 = $queryBuilder->expr()->andX();
+            $andModule3->add($queryBuilder->expr()->lte('groupe.dateDebutG', '?2'));
+            $andModule3->add($queryBuilder->expr()->gte('groupe.dateFinG', '?2'));
+
+            $orModule = $queryBuilder->expr()->orX();
+            $orModule->add($andModule);
+            $orModule->add($andModule2);
+            $orModule->add($andModule3);
+
+            $queryBuilder->andWhere($orModule);
+
+            $queryBuilder->setParameters(array(1 => $data['dateDebutG'], 2 => $data['dateFinG'], 3 => $data['lieuG']));
 
         return ($queryBuilder->getQuery()->execute());
     }

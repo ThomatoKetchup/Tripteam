@@ -43,6 +43,82 @@
     border-radius:0;
     box-shadow:none;
     height:auto;
+.banniere{
+    padding: 0px;
+    min-height: 100%;
+}
+
+.ban{
+    padding: 0px;
+    width:100%;
+    max-width: 100%;
+    position:relative; /*donc se place en dessous de innerbanner*/
+}
+
+.ban img{
+    width:100%;
+    height: 420px;
+}
+
+.inner-banner{
+    position: absolute; /*donc se place au dessus de ban*/
+    margin-left: 200px;
+    width:100%;
+    top:5%;
+}
+
+.inner-banner h1{
+    font-size: 50px;
+    font-family: 'Satisfy', cursive;
+    margin-left: 500px;
+    color:white;
+    text-shadow: 1px 1px 5px black;
+}
+
+#search_dateDebutG{
+    width: 178px;
+    display: inline-block;
+
+}
+
+#search_dateFinG{
+    width: 178px;
+    display: inline-block;
+}
+
+#search_lieuG{
+    width: 204px;
+    display: inline-block;
+}
+
+#button{
+    width: 120px;
+    height: 40px;
+    background-color: #f1ab53;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+label{
+    font-family: 'Comic Sans MS', cursive;
+    font-size: 13px;
+    display:inline-block;
+    width:200px;
+    color:#FAFAD2;
+}
+
+form {
+    width: 100px;
+    margin-left: auto; /*100*/
+    margin-right: auto; /*5*/
+    line-height:15px;
+    font-family: Arial, sans-serif;
+    font-size: 13px;
+}
+
+table{
+    width: 50%;
+    margin-left: 225px;
 }
 .float-label{
     font-size:10px;
@@ -111,4 +187,8 @@ ul.mail-list li span.mail-message-preview{
 }
 .mail-search{
     border-bottom-color:#7FBCC9!important;
+}
+=======
+.flash-notice{
+    color:red;
 }

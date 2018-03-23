@@ -49,19 +49,19 @@
             </div>
 
 
+            <div class="form-group">
+                {{ form_label(form.nomG, 'Nom de votre groupe') }}
+                {{ form_widget(form.nomG, {'attr':{'class':'form-control', 'placeholder': "Entrez le nom de votre groupe"}}) }}
+                {{ form_errors(form.nomG) }}
+            </div>
 
              <input type="submit" value="Valider" id="button" class="btn btn-primary btn-lg btn-block login-button"/>
 
             {{ form_end(form) }}
 
         </div>
+
     </div>
 
-
-    <ul>
-        <li>
-            <a href="{{ path('groupe_index') }}">Back to the list</a>
-        </li>
-    </ul>
 
 {% endblock %}

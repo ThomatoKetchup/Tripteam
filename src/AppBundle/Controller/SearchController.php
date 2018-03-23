@@ -42,6 +42,8 @@ class SearchController extends Controller
             $em->persist($groupe);
             $em->flush();
             return $this->redirectToRoute('groupe_show', array('id' => $groupe->getId()));
+        if($searchResult==null && $form->isSubmitted() && $form->isValid()){
+            $this->addFlash("bat-alarm", "Aucun résultat ne correspond à votre recherche");
         }
 
         return $this->render('search/search.html.twig', array(
