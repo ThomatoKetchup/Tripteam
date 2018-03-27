@@ -1,4 +1,8 @@
 {% trans_default_domain 'FOSUserBundle' %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="style/register.css">
+{% endblock %}
+{% block body %}
 
 {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
     {{ form_widget(form) }}
@@ -6,3 +10,4 @@
         <input type="submit" value="{{ 'registration.submit'|trans }}" />
     </div>
 {{ form_end(form) }}
+{% endblock %}
