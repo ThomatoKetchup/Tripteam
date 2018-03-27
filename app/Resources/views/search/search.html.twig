@@ -49,6 +49,8 @@
         </div>
         {{ form_end(form) }}
 
+
+        {% if searchResult is defined and searchResult==0 %}
         <ul class="mail-list">
             {% for groupe in groupes %}
                 <div class="col-md-2 col-sm-2">
@@ -64,16 +66,37 @@
                 </div>
                 <div class="col-md-2 col-sm-5">
                         <a href="{{ path('group_add_user', { 'id': groupe.id }) }}">Rejoindre ce groupe</a>
-
                 </div>
                 <li>
-                    <a href="">
-
-                    </a>
+                    <a href=""></a>
                 </li>
             {% endfor %}
-
         </ul>
+        {% endif %}
+
+        {% if searchResult is defined and searchResult!=0 %}
+            <ul class="mail-list">
+                {% for groupe in searchResult %}
+                    <div class="col-md-2 col-sm-2">
+                        <p>photo du groupe</p>
+                    </div>
+                    <div class="col-md-5 col-sm-4">
+                        <span class="mail-sender">{{ groupe.nomG }}</span> <br>
+                        <span class="mail-message-preview">{{ groupe.lieuG }}</span>
+                    </div>
+                    <div class="col-md-3 ">
+                        <span class="mail-message-preview">{% if groupe.dateDebutG %}{{ groupe.dateDebutG|date('Y-m-d') }}{% endif %}</span><br>
+                        <span class="mail-message-preview">{% if groupe.dateFinG %}{{ groupe.dateFinG|date('Y-m-d') }}{% endif %}</span>
+                    </div>
+                    <div class="col-md-2 col-sm-5">
+                        <a href="{{ path('group_add_user', { 'id': groupe.id }) }}">Rejoindre ce groupe</a>
+                    </div>
+                    <li>
+                        <a href=""></a>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% endif %}
 
 
 
@@ -89,7 +112,25 @@
                     </div>
                     <div class="modal-body">
                         {{ form_start(groupform) }}
-                        {{ form_widget(groupform) }}
+
+                        {{ form_label(groupform.nomG, 'Nom de votre groupe') }}
+                        {{ form_widget(groupform.nomG, {'attr':{'class':'form-control', 'placeholder': "Entrez le nom de votre groupe"}}) }}
+                        {% if form_errors(groupform.nomG) is not empty %}
+                            <div class="alert alert-danger" >Le nom du groupe est déjà utilisé</div>
+                        {% endif %}
+
+                        {{ form_label(groupform.dateDebutG, 'Date du début de votre séjour') }}
+                        {{ form_widget(groupform.dateDebutG, {'attr':{'class':'form-control'}}) }}
+                        {{ form_errors(groupform.dateDebutG) }}
+
+                        {{ form_label(groupform.dateFinG, 'Date de la fin de votre séjour') }}
+                        {{ form_widget(groupform.dateFinG, {'attr':{'class':'form-control'}}) }}
+                        {{ form_errors(groupform.dateFinG) }}
+
+                        {{ form_label(groupform.lieuG, 'Lieu de votre séjour') }}
+                        {{ form_widget(groupform.lieuG, {'attr':{'class':'form-control', 'placeholder': "Entrez le lieu de votre séjour"}}) }}
+                        {{ form_errors(groupform.lieuG) }}
+
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

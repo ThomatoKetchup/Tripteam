@@ -37,7 +37,7 @@ class SearchController extends Controller
         $groupform = $this->createForm('AppBundle\Form\GroupeType', $groupe);
         $groupform->handleRequest($request);
 
-        if ($groupform->isSubmitted() && $groupform->isValid()) {
+         if ($groupform->isSubmitted() && $groupform->isValid()) {
             $this->getUser()->addGroupe($groupe);
             $groupe->addUser($this->getUser());
             $em = $this->getDoctrine()->getManager();
