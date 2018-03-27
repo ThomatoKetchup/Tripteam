@@ -56,9 +56,8 @@ class User extends BaseUser
     private $langues;
 
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", nullable=true)
      *
-     * @Assert\NotBlank(message="Please, upload the product brochure as a PDF file.")
      * @Assert\File(mimeTypes={ "image/jpeg", "image/png", "image/jpg",})
      */
     private $brochure;

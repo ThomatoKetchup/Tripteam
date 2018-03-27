@@ -13,7 +13,7 @@
     <div class="col-md-8 col-md-offset-1 col-sm-8">
         <!--Ne pas toucher avant-->
         {{ form_start(form) }}
-        <h1>Rechercher un groupe</h1>
+        <h1 class="title">Rechercher un groupe</h1>
         <div class="row search">
             <div class = "col-md-5 col-sm-5">
 
@@ -90,11 +90,12 @@
                     <div class="modal-body">
                         {{ form_start(groupform) }}
                         {{ form_widget(groupform) }}
-                        {{ form_end(groupform) }}
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                         <input type="submit" value="Valider" id="button" class="btn btn-primary btn-lg btn-block login-button"/>
+                        {{ form_end(groupform) }}
+
                     </div>
                 </div>
             </div>
