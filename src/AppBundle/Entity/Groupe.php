@@ -15,8 +15,6 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 class Groupe
 {
 
-
-
     /**
      * @var int
      *
@@ -66,6 +64,13 @@ class Groupe
      * @ORM\ManyToMany(targetEntity="User", cascade={"persist"}, mappedBy="groupes")
      */
     protected $users;
+
+
+    /**
+     * @ORM\ManyToOne(targetEntity="User")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $admin;
 
 
     /**
@@ -240,5 +245,29 @@ class Groupe
     public function getUsers()
     {
         return $this->users;
+    }
+
+    /**
+     * Set admin
+     *
+     * @param \AppBundle\Entity\User $admin
+     *
+     * @return Groupe
+     */
+    public function setAdmin(\AppBundle\Entity\User $admin)
+    {
+        $this->admin = $admin;
+
+        return $this;
+    }
+
+    /**
+     * Get admin
+     *
+     * @return \AppBundle\Entity\User
+     */
+    public function getAdmin()
+    {
+        return $this->admin;
     }
 }

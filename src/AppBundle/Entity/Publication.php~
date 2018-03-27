@@ -12,10 +12,7 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Publication
 {
-    /**
-     * @ORM\ManyToOne(targetEntity="Groupe", inversedBy="Publication")
-     * @ORM\JoinColumn(name="category_id", referencedColumnName="id")
-     */
+
     /**
      * @var int
      *
@@ -142,27 +139,28 @@ class Publication
 
     }
 
+
     /**
-     * Set idGroupe
+     * Set groupe
      *
-     * @param \int $idGroupe
+     * @param \AppBundle\Entity\Groupe $groupe
      *
      * @return Publication
      */
-    public function setIdGroupe(\int $idGroupe)
+    public function setGroupe(\AppBundle\Entity\Groupe $groupe)
     {
-        $this->idGroupe = $idGroupe;
+        $this->groupe = $groupe;
 
         return $this;
     }
 
     /**
-     * Get idGroupe
+     * Get groupe
      *
-     * @return \int
+     * @return \AppBundle\Entity\Groupe
      */
-    public function getIdGroupe()
+    public function getGroupe()
     {
-        return $this->idGroupe;
+        return $this->groupe;
     }
 }
