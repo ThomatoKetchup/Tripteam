@@ -12,10 +12,7 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Publication
 {
-    /**
-     * @ORM\ManyToOne(targetEntity="Groupe", inversedBy="Publication")
-     * @ORM\JoinColumn(name="category_id", referencedColumnName="id")
-     */
+
     /**
      * @var int
      *

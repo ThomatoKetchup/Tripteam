@@ -1,0 +1,66 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+
+    <header class="container-fluid header">
+        <div class="container">
+            <a href="#"><img class="logo" src="{{ asset('img/logo.png') }}" alt="Tripteam" />
+            </a>
+            <nav class="menu">
+                <a href="#">Accueil</a>
+                <a href="#about">Qu'est-ce que Tripteam</a>
+                <a href="#joinus">Se déconnecter</a>
+            </nav>
+        </div>
+    </header>
+
+
+    <div class="container">
+        <h2 id="joinus">Créez un groupe</h2>
+        <div class="main-center">
+
+            {{ form_start(form) }}
+
+            <div class="form-group">
+                {{ form_label(form.nomG, 'Nom de votre groupe') }}
+                {{ form_widget(form.nomG, {'attr':{'class':'form-control', 'placeholder': "Entrez le nom de votre groupe"}}) }}
+                {% if form_errors(form.nomG) is not empty %}
+                    <div class="alert alert-danger" >Le nom du groupe est déjà utilisé</div>
+                {% endif %}
+            </div>
+
+            <div class="form-group">
+                {{ form_label(form.dateDebutG, 'Date du début de votre séjour') }}
+                {{ form_widget(form.dateDebutG, {'attr':{'class':'form-control'}}) }}
+                {{ form_errors(form.dateDebutG) }}
+            </div>
+
+            <div class="form-group">
+                {{ form_label(form.dateFinG, 'Date de la fin de votre séjour') }}
+                {{ form_widget(form.dateFinG, {'attr':{'class':'form-control'}}) }}
+                {{ form_errors(form.dateFinG) }}
+            </div>
+
+            <div class="form-group">
+                {{ form_label(form.lieuG, 'Lieu de votre séjour') }}
+                {{ form_widget(form.lieuG, {'attr':{'class':'form-control', 'placeholder': "Entrez le lieu de votre séjour"}}) }}
+                {{ form_errors(form.lieuG) }}
+            </div>
+
+            <div class="form-group">
+                {{ form_label(form.nomG, 'Nom de votre groupe') }}
+                {{ form_widget(form.nomG, {'attr':{'class':'form-control', 'placeholder': "Entrez le nom de votre groupe"}}) }}
+                {{ form_errors(form.nomG) }}
+            </div>
+
+             <input type="submit" value="Valider" id="button" class="btn btn-primary btn-lg btn-block login-button"/>
+
+            {{ form_end(form) }}
+
+        </div>
+
+    </div>
+
+
+{% endblock %}
