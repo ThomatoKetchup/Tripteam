@@ -2,7 +2,6 @@
 
 {% block stylesheets %}
     {{ parent() }}
-    <link href="{{ asset('style/profil.css') }}" rel="stylesheet" type="text/css" media="screen,projection"/>
     <link href="{{ asset('style/groupe.css') }}" rel="stylesheet" type="text/css" media="screen,projection"/>
 {% endblock %}
 
@@ -10,51 +9,43 @@
 {% block content %}
 
 
-
-
-
-
-    <div class="col-md-8 col-md-offset-1 col-sm-8  main-content">
+    <div class="col-md-10 col-sm-8  main-content">
         <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
         <div class="container">
             <div class="row">
                 <div class="col-md-12 text-center ">
                     <div class="panel panel-default">
                         <div class="userprofile social ">
-                            <div class="userpic"> <img src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="" class="userpicimg"> </div>
-                            <h3 class="username">Lucky Sans</h3>
-                            <p>Gujarat, India</p>
-                            <div class="socials tex-center"> <a href="" class="btn btn-circle btn-primary ">
-                                    <i class="fa fa-facebook"></i></a> <a href="" class="btn btn-circle btn-danger ">
-                                    <i class="fa fa-google-plus"></i></a> <a href="" class="btn btn-circle btn-info ">
-                                    <i class="fa fa-twitter"></i></a> <a href="" class="btn btn-circle btn-warning "><i class="fa fa-envelope"></i></a>
-                            </div>
+                            <h2 class="groupname">Les vacanciers</h2>
+                            <p>Paris, France</p>
                         </div>
                         <div class="col-md-12 border-top border-bottom">
-                            <ul class="nav nav-pills pull-left countlist" role="tablist">
+
+
+                            <ul class="nav pull-left countlist" role="tablist">
                                 <li role="presentation">
-                                    <h3>1452<br>
-                                        <small>Follower</small> </h3>
+                                    <h3>Paris<br>
+                                        <small>Lieu</small> </h3>
                                 </li>
                                 <li role="presentation">
-                                    <h3>245<br>
-                                        <small>Following</small> </h3>
+                                    <h3>18 avril 2018<br>
+                                        <small>Départ</small> </h3>
                                 </li>
                                 <li role="presentation">
-                                    <h3>5000<br>
-                                        <small>Activity</small> </h3>
+                                    <h3>28 avril 2018<br>
+                                        <small>Arrivée</small> </h3>
                                 </li>
                             </ul>
-                            <button class="btn btn-primary followbtn">Follow</button>
+                            <button class="btn btn-primary followbtn">Rejoindre ce groupe</button>
                         </div>
                         <div class="clearfix"></div>
                     </div>
                 </div>
                 <!-- /.col-md-12 -->
-                <div class="col-md-4 col-sm-12 pull-right">
+                <div class="col-md-4 col-sm-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <h1 class="page-header small">Personal Details</h1>
+                            <h1 class="page-header small">Informations sur le groupe</h1>
                             <p class="page-subtitle small">Limited information is visible</p>
                         </div>
                         <div class="col-md-12 photolist">
@@ -69,7 +60,7 @@
                     </div>
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <h1 class="page-header small">Worked with many domain</h1>
+                            <h1 class="page-header small">Centres d'intérets</h1>
                             <p class="page-subtitle small">Like to work fr different business</p>
                         </div>
                         <div class="col-md-12">
@@ -128,12 +119,13 @@
                         <div class="clearfix"></div>
                     </div>
                 </div>
-                <div class="col-md-8 col-sm-12 pull-left posttimeline">
+
+                <div class="col-md-8 col-sm-12 posttimeline">
                     <div class="panel panel-default">
                         <div class="panel-body">
                             <div class="status-upload nopaddingbtm">
                                 <form>
-                                    <textarea class="form-control" placeholder="What are you doing right now?"></textarea>
+                                    <textarea class="form-control" placeholder="Que faites vous?"></textarea>
                                     <br>
                                     <ul class="nav nav-pills pull-left ">
                                         <li><a title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Audio"><i class="glyphicon glyphicon-bullhorn"></i></a></li>
