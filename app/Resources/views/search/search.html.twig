@@ -115,9 +115,7 @@
 
                         {{ form_label(groupform.nomG, 'Nom de votre groupe') }}
                         {{ form_widget(groupform.nomG, {'attr':{'class':'form-control', 'placeholder': "Entrez le nom de votre groupe"}}) }}
-                        {% if form_errors(groupform.nomG) is not empty %}
-                            <div class="alert alert-danger" >Le nom du groupe est déjà utilisé</div>
-                        {% endif %}
+                        {{ form_errors(groupform.nomG) }}
 
                         {{ form_label(groupform.dateDebutG, 'Date du début de votre séjour') }}
                         {{ form_widget(groupform.dateDebutG, {'attr':{'class':'form-control'}}) }}

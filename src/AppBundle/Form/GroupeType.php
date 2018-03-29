@@ -16,7 +16,6 @@ class GroupeType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('nomG')
             ->add('dateDebutG')->add('dateFinG')->add('lieuG')->add('nomG');
     }
 
