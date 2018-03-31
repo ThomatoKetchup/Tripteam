@@ -38,7 +38,7 @@ class GroupeController extends Controller
             'groupes' => $groupes,
         ));
     }
-    
+
 
     /**
      * Finds and displays a groupe entity.
