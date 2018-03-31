@@ -16,24 +16,24 @@
                 <div class="col-md-12 text-center ">
                     <div class="panel panel-default">
                         <div class="userprofile social ">
-                            <h2 class="groupname">Les vacanciers</h2>
-                            <p>Paris, France</p>
+                            <h2 class="groupname">{{ groupe.nomG }}s</h2>
+                            <p>{{ groupe.lieuG }}</p>
                         </div>
                         <div class="col-md-12 border-top border-bottom">
 
 
-                            <ul class="nav pull-left countlist" role="tablist">
+                            <ul class="nav pull-left countlist nav-pills" role="tablist">
                                 <li role="presentation">
-                                    <h3>Paris<br>
+                                    <h3>{{ groupe.lieuG }}<br>
                                         <small>Lieu</small> </h3>
                                 </li>
                                 <li role="presentation">
-                                    <h3>18 avril 2018<br>
-                                        <small>Départ</small> </h3>
+                                    <h3>{{ groupe.dateDebutG|date('d-m-Y') }}<br>
+                                        <small>Arrivée</small> </h3>
                                 </li>
                                 <li role="presentation">
-                                    <h3>28 avril 2018<br>
-                                        <small>Arrivée</small> </h3>
+                                    <h3>{{ groupe.dateFinG|date('d-m-Y') }}<br>
+                                        <small>Départ</small> </h3>
                                 </li>
                             </ul>
                             <button class="btn btn-primary followbtn">Rejoindre ce groupe</button>
@@ -43,25 +43,30 @@
                 </div>
                 <!-- /.col-md-12 -->
                 <div class="col-md-4 col-sm-12">
+
+                    <!--Affichage des membres du groupe-->
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <h1 class="page-header small">Informations sur le groupe</h1>
-                            <p class="page-subtitle small">Limited information is visible</p>
+                            <h1 class="page-header small">Membres</h1>
                         </div>
-                        <div class="col-md-12 photolist">
+                        <div class="col-md-12 ">
                             <div class="row">
-                                <div class="col-sm-3 col-xs-3"><img src="https://bootdey.com/img/Content/avatar/avatar1.png" class="" alt=""> </div>
-                                <div class="col-sm-3 col-xs-3"><img src="https://bootdey.com/img/Content/avatar/avatar1.png" class="" alt=""> </div>
-                                <div class="col-sm-3 col-xs-3"><img src="https://bootdey.com/img/Content/avatar/avatar1.png" class="" alt=""> </div>
-                                <div class="col-sm-3 col-xs-3"><img src="https://bootdey.com/img/Content/avatar/avatar1.png" class="" alt=""> </div>
+                                {% for user in users %}
+
+                                    <a href="" class="member"> <img src="{{ asset('user/' ~ user.brochure) }}" class="img-responsive center-block displayimg" alt="Photo de profil">
+                                        <div class="memmbername">{{ user.prenom }} {{ user.nom }}</div>
+                                    </a>
+
+                                {% endfor %}
                             </div>
                         </div>
                         <div class="clearfix"></div>
                     </div>
+
+                    <!--Affichage des centres d'interets du groupe-->
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             <h1 class="page-header small">Centres d'intérets</h1>
-                            <p class="page-subtitle small">Like to work fr different business</p>
                         </div>
                         <div class="col-md-12">
                             <ul class="list-group">
@@ -74,9 +79,12 @@
                         </div>
                         <div class="clearfix"></div>
                     </div>
+
+                    <!-- Affichage des langues du groupe  -->
+
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <h1 class="page-header small">What others are saying </h1>
+                            <h1 class="page-header small">Langues</h1>
                             <p class="page-subtitle small">Express your self, Express to other</p>
                         </div>
                         <div class="col-md-12">
@@ -96,350 +104,60 @@
                         </div>
                         <div class="clearfix"></div>
                     </div>
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <h1 class="page-header small">Recently Connected</h1>
-                            <p class="page-subtitle small">You have recemtly connected with 34 friends</p>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="memberblock"> <a href="" class="member"> <img src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="">
-                                    <div class="memmbername">Ajay Sriram</div>
-                                </a> <a href="" class="member"> <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="">
-                                    <div class="memmbername">Rajesh Sriram</div>
-                                </a> <a href="" class="member"> <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="">
-                                    <div class="memmbername">Manish Sriram</div>
-                                </a> <a href="" class="member"> <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="">
-                                    <div class="memmbername">Chandra Amin</div>
-                                </a> <a href="" class="member"> <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="">
-                                    <div class="memmbername">John Sriram</div>
-                                </a> <a href="" class="member"> <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="">
-                                    <div class="memmbername">Lincoln Sriram</div>
-                                </a> </div>
-                        </div>
-                        <div class="clearfix"></div>
-                    </div>
                 </div>
 
                 <div class="col-md-8 col-sm-12 posttimeline">
+
+                    <!-- Formulaire publications  -->
                     <div class="panel panel-default">
                         <div class="panel-body">
                             <div class="status-upload nopaddingbtm">
-                                <form>
-                                    <textarea class="form-control" placeholder="Que faites vous?"></textarea>
-                                    <br>
-                                    <ul class="nav nav-pills pull-left ">
-                                        <li><a title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Audio"><i class="glyphicon glyphicon-bullhorn"></i></a></li>
-                                        <li><a title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Video"><i class=" glyphicon glyphicon-facetime-video"></i></a></li>
-                                        <li><a title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Picture"><i class="glyphicon glyphicon-picture"></i></a></li>
-                                    </ul>
-                                    <button type="submit" class="btn btn-success pull-right"> Share</button>
-                                </form>
+                                    {{ form_start(form) }}
+                                    <div class="form-group">
+                                        {{ form_widget(form.content, {'attr':{'class':'form-control', 'placeholder': "Exprimez vous"}}) }}
+                                        {{ form_errors(form.content) }}
+                                    </div>
+                                    <input type="submit" class="pull-right" value="Publier " />
+                                    {{ form_end(form) }}
                             </div>
-                            <!-- Status Upload  -->
                         </div>
                     </div>
-                    <div class="panel panel-default">
-                        <div class="btn-group pull-right postbtn">
-                            <button type="button" class="dotbtn dropdown-toggle" data-toggle="dropdown" aria-expanded="false"> <span class="dots"></span> </button>
-                            <ul class="dropdown-menu pull-right" role="menu">
-                                <li><a href="javascript:void(0)">Hide this</a></li>
-                                <li><a href="javascript:void(0)">Report</a></li>
-                            </ul>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="media">
-                                <div class="media-left"> <a href="javascript:void(0)"> <img src="https://bootdey.com/img/Content/avatar/avatar3.png" alt="" class="media-object"> </a> </div>
-                                <div class="media-body">
-                                    <h4 class="media-heading">Lucky Sans<br>
-                                        <small><i class="fa fa-clock-o"></i> Yesterday, 2:00 am</small> </h4>
-                                    <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio. </p>
 
-                                    <ul class="nav nav-pills pull-left ">
-                                        <li><a href="" title=""><i class="glyphicon glyphicon-thumbs-up"></i> 2015</a></li>
-                                        <li><a href="" title=""><i class=" glyphicon glyphicon-comment"></i> 25</a></li>
-                                        <li><a href="" title=""><i class="glyphicon glyphicon-share-alt"></i> 15</a></li>
-                                    </ul>
-                                </div>
+                    <!--Affichage des publications-->
+                    {% for publication in publications %}
+                        <div class="panel panel-default">
+                            <!--Bouton pour supprimer -->
+                            <div class="btn-group pull-right postbtn">
+                                <button type="button" class="dotbtn dropdown-toggle" data-toggle="dropdown" aria-expanded="false"> <span class="dots"></span> </button>
+                                <ul class="dropdown-menu pull-right" role="menu">
+                                    <li><a href="javascript:void(0)">Hide this</a></li>
+                                    <li><a href="javascript:void(0)">Report</a></li>
+                                </ul>
                             </div>
-                        </div>
-                        <div class="col-md-12 commentsblock border-top">
-                            <div class="media">
-                                <div class="media-left"> <a href="javascript:void(0)"> <img alt="64x64" src="https://bootdey.com/img/Content/avatar/avatar1.png" class="media-object"> </a> </div>
-                                <div class="media-body">
-                                    <h4 class="media-heading">Astha Smith</h4>
-                                    <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
-                                </div>
-                            </div>
-                            <div class="media">
-                                <div class="media-left"> <a href="javascript:void(0)"> <img alt="64x64" src="https://bootdey.com/img/Content/avatar/avatar1.png" class="media-object"> </a> </div>
-                                <div class="media-body">
-                                    <h4 class="media-heading">Lucky Sans</h4>
-                                    <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus. </p>
-                                    <div class="media">
-                                        <div class="media-left"> <a href="javascript:void(0)"> <img alt="64x64" src="https://bootdey.com/img/Content/avatar/avatar1.png" class="media-object"> </a> </div>
-                                        <div class="media-body">
-                                            <h4 class="media-heading">Astha Smith</h4>
-                                            <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
-                                        </div>
+                            <!--Fin-->
+
+                            <div class="col-md-12">
+                                <div class="media">
+                                    <div class="media-left">
+                                        <a href="javascript:void(0)"> <img src="{{ asset('user/' ~ publication.author.brochure) }}" class=" media-object img-responsive displayimg" alt="Photo de profil">
+                                        </a>
+                                        <h4 class="media-heading "><div class="pull-left">{{ publication.author.prenom }}</div><br>
+                                            <small><i class="fa fa-clock-o"></i> {{ publication.date|date('d-m-Y à H:i') }}</small> </h4>
+                                    </div>
+                                    <div class="media-body">
+
+                                        <p>{{ publication.content }}</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="panel panel-default">
-                        <div class="btn-group pull-right postbtn">
-                            <button type="button" class="dotbtn dropdown-toggle" data-toggle="dropdown" aria-expanded="false"> <span class="dots"></span> </button>
-                            <ul class="dropdown-menu pull-right" role="menu">
-                                <li><a href="javascript:void(0)">Hide this</a></li>
-                                <li><a href="javascript:void(0)">Report</a></li>
-                            </ul>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="media">
-                                <div class="media-left"> <a href="javascript:void(0)"> <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="" class="media-object"> </a> </div>
-                                <div class="media-body">
-                                    <h4 class="media-heading"> Lucky Sans<br>
-                                        <small><i class="fa fa-clock-o"></i> Yesterday, 2:00 am</small> </h4>
-                                    <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio. </p>
-                                    <ul class="nav nav-pills pull-left ">
-                                        <li><a href="" title=""><i class="glyphicon glyphicon-thumbs-up"></i> 2015</a></li>
-                                        <li><a href="" title=""><i class=" glyphicon glyphicon-comment"></i> 25</a></li>
-                                        <li><a href="" title=""><i class="glyphicon glyphicon-share-alt"></i> 15</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-12 border-top">
-                            <div class="status-upload">
-                                <form>
-                                    <label>Comment</label>
-                                    <textarea class="form-control" placeholder="Comment here"></textarea>
-                                    <br>
-                                    <ul class="nav nav-pills pull-left ">
-                                        <li><a title=""><i class="glyphicon glyphicon-bullhorn"></i></a></li>
-                                        <li><a title=""><i class=" glyphicon glyphicon-facetime-video"></i></a></li>
-                                        <li><a title=""><i class="glyphicon glyphicon-picture"></i></a></li>
-                                    </ul>
-                                    <button type="submit" class="btn btn-success pull-right"> Comment</button>
-                                </form>
-                            </div>
-                            <!-- Status Upload  -->
 
-                        </div>
-                    </div>
-                    <div class="panel panel-default">
-                        <div class="btn-group pull-right postbtn">
-                            <button type="button" class="dotbtn dropdown-toggle" data-toggle="dropdown" aria-expanded="false"> <span class="dots"></span> </button>
-                            <ul class="dropdown-menu pull-right" role="menu">
-                                <li><a href="javascript:void(0)">Hide this</a></li>
-                                <li><a href="javascript:void(0)">Report</a></li>
-                            </ul>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="media">
-                                <div class="media-left"> <a href="javascript:void(0)"> <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="" class="media-object"> </a> </div>
-                                <div class="media-body">
-                                    <h4 class="media-heading"> Lucky Sans<br>
-                                        <small><i class="fa fa-clock-o"></i> Yesterday, 2:00 am</small> </h4>
-                                    <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio. </p>
-                                    <ul class="nav nav-pills pull-left ">
-                                        <li><a href="" title=""><i class="glyphicon glyphicon-thumbs-up"></i> 2015</a></li>
-                                        <li><a href="" title=""><i class=" glyphicon glyphicon-comment"></i> 25</a></li>
-                                        <li><a href="" title=""><i class="glyphicon glyphicon-share-alt"></i> 15</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-12 commentsblock border-top">
-                            <div class="media">
-                                <div class="media-left"> <a href="javascript:void(0)"> <img alt="64x64" src="https://bootdey.com/img/Content/avatar/avatar1.png" class="media-object"> </a> </div>
-                                <div class="media-body">
-                                    <h4 class="media-heading">Astha Smith</h4>
-                                    <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus. </p>
-                                    <div class="media">
-                                        <div class="media-left"> <a href="javascript:void(0)"> <img alt="64x64" src="https://bootdey.com/img/Content/avatar/avatar1.png" class="media-object"> </a> </div>
-                                        <div class="media-body">
-                                            <h4 class="media-heading">Nested Lucky Sans</h4>
-                                            <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="panel panel-default">
-                        <div class="btn-group pull-right postbtn">
-                            <button type="button" class="dotbtn dropdown-toggle" data-toggle="dropdown" aria-expanded="false"> <span class="dots"></span> </button>
-                            <ul class="dropdown-menu pull-right" role="menu">
-                                <li><a href="javascript:void(0)">Hide this</a></li>
-                                <li><a href="javascript:void(0)">Report</a></li>
-                            </ul>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="media">
-                                <div class="media-left"> <a href="javascript:void(0)"> <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="" class="media-object"> </a> </div>
-                                <div class="media-body">
-                                    <h4 class="media-heading"> Lucky Sans<br>
-                                        <small><i class="fa fa-clock-o"></i> Yesterday, 2:00 am</small> </h4>
-                                    <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio. </p>
-                                    <ul class="nav nav-pills pull-left ">
-                                        <li><a href="" title=""><i class="glyphicon glyphicon-thumbs-up"></i> 2015</a></li>
-                                        <li><a href="" title=""><i class=" glyphicon glyphicon-comment"></i> 25</a></li>
-                                        <li><a href="" title=""><i class="glyphicon glyphicon-share-alt"></i> 15</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="panel panel-default">
-                        <div class="btn-group pull-right postbtn">
-                            <button type="button" class="dotbtn dropdown-toggle" data-toggle="dropdown" aria-expanded="false"> <span class="dots"></span> </button>
-                            <ul class="dropdown-menu pull-right" role="menu">
-                                <li><a href="javascript:void(0)">Hide this</a></li>
-                                <li><a href="javascript:void(0)">Report</a></li>
-                            </ul>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="media">
-                                <div class="media-left"> <a href="javascript:void(0)"> <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="" class="media-object"> </a> </div>
-                                <div class="media-body">
-                                    <h4 class="media-heading"> Lucky Sans<br>
-                                        <small><i class="fa fa-clock-o"></i> Yesterday, 2:00 am</small> </h4>
-                                    <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio. </p>
-                                    <ul class="nav nav-pills pull-left ">
-                                        <li><a href="" title=""><i class="glyphicon glyphicon-thumbs-up"></i> 2015</a></li>
-                                        <li><a href="" title=""><i class=" glyphicon glyphicon-comment"></i> 25</a></li>
-                                        <li><a href="" title=""><i class="glyphicon glyphicon-share-alt"></i> 15</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                    {% endfor %}
+
+
         </div>
     </div>
-        <br>
-        <br>
-        <br>
-        <div class="row">
-            <div class="col-md-6">
-                <div class="logo">
-                    <h2>{{ groupe.nomG }}</h2>
-                </div>
-                {% if app.user == groupe.admin %}
-                    <button class="btn btn-primary" data-toggle="modal" data-target="#modifyProfil">Gérer le groupe</button>
-                {% endif %}
-            </div>
-            <div class="col-md-6 infogroup">
-                <section>
-                    <h4>Les membres</h4>
-                    <ul class="list-inline">
-                        {% for user in users %}
-                            <li>
 
-
-                                <a href="{{ path('user_show', { 'id': user.id }) }}">
-                                    <img src="{{ asset('user/' ~ user.brochure) }}" class="img-responsive center-block displayimg" alt="Photo de profil">
-
-                                    <span class="mail-message-preview">{{ user.prenom }}</span>
-                                </a>
-                            </li>
-                        {% endfor %}
-                    </ul>
-                </section>
-
-
-
-
-            </div>
-
-
-        </div>
-
-
-        <div class="row">
-            <div class="user-image">
-                <div class="logo">
-                    <h2>{{ groupe.nomG }}</h2>
-                </div>
-                {% if app.user == groupe.admin %}
-                    <button class="btn btn-primary" data-toggle="modal" data-target="#modifyProfil">Gérer le groupe</button>
-                {% endif %}
-
-
-                <hr class="separator">
-
-                <section class="container-fluid about">
-                    <div class="container">
-                        <div class="row">
-                            <article class="col-md-4 col-lg-4 col-xs-12 col-sm-12">
-                                <ul class="list-inline">
-                                    <h3>Les membres</h3>
-                                    {% for user in users %}
-                                        <li>
-
-
-                                            <a href="{{ path('user_show', { 'id': user.id }) }}">
-                                                <img src="{{ asset('user/' ~ user.brochure) }}" class="img-responsive center-block displayimg" alt="Photo de profil">
-                                                <span class="mail-message-preview">{{ user.prenom }}</span>
-                                            </a>
-                                        </li>
-                                    {% endfor %}
-                                </ul>
-                            </article>
-                            <article class="col-md-4 col-lg-4 col-xs-12 col-sm-12">
-                                <h3>Langues</h3>
-                                <ul class="list-inline">
-                                </ul>                            </article>
-                            <article class="col-md-4 col-lg-4 col-xs-12 col-sm-12">
-                                <h3>Centres d'intérêts</h3>
-                                <ul class="list-inline">
-                                    {% for user in users %}
-                                        <li>Livres policiers,</li>
-                                    {% endfor %}
-                                </ul>
-                            </article>
-                        </div>
-                        <hr class="separator">
-
-                    </div>
-                </section>
-
-                <hr class="separator">
-
-                <!--Informations personnelle-->
-                <div class="infoperso">
-                    <h4>A propos du groupe</h4>
-                    <!-- Bouton execution modal -->
-
-                </div>
-
-                <section class="content publication">
-
-                    {{ form_start(form) }}
-                    <div class="form-group">
-                        {{ form_label(form.textePublication, 'Nouvelle Publication :') }}
-                        {{ form_widget(form.textePublication, {'attr':{'class':'form-control', 'placeholder': "Exprimez vous"}}) }}
-                        {{ form_errors(form.textePublication) }}
-                    </div>
-
-                    <div class="form-group">
-                        {{ form_label(form.image, 'Joindre un fichier') }}
-                        {{ form_widget(form.image, {'attr':{'class':'form-control'}}) }}
-                        {{ form_errors(form.image) }}
-                    </div>
-
-
-                    <input type="submit" value="Publier " />
-                    {{ form_end(form) }}
-                </section>
-
-
-
-
-
-        </div>
     </div>
     </div>
 

@@ -74,6 +74,13 @@ class Groupe
 
 
     /**
+     * @ORM\OneToMany(targetEntity="Publication", mappedBy="groupe")
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private $publication;
+
+
+    /**
      * Get id
      *
      * @return int
@@ -245,5 +252,63 @@ class Groupe
     public function getUsers()
     {
         return $this->users;
+    }
+
+    /**
+     * Set admin
+     *
+     * @param \AppBundle\Entity\User $admin
+     *
+     * @return Groupe
+     */
+    public function setAdmin(\AppBundle\Entity\User $admin)
+    {
+        $this->admin = $admin;
+
+        return $this;
+    }
+
+    /**
+     * Get admin
+     *
+     * @return \AppBundle\Entity\User
+     */
+    public function getAdmin()
+    {
+        return $this->admin;
+    }
+
+    /**
+     * Add publication
+     *
+     * @param \AppBundle\Entity\Publication $publication
+     *
+     * @return Groupe
+     */
+    public function addPublication(\AppBundle\Entity\Publication $publication)
+    {
+        $this->publication[] = $publication;
+
+        return $this;
+    }
+
+    /**
+     * Remove publication
+     *
+     * @param \AppBundle\Entity\Publication $publication
+     */
+    public function removePublication(\AppBundle\Entity\Publication $publication)
+    {
+        $this->publication->removeElement($publication);
+    }
+
+    /**
+     * Get publication
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getPublication()
+    {
+        return $this->publication;
     }
 }

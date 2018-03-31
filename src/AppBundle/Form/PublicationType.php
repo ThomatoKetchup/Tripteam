@@ -15,7 +15,7 @@ class PublicationType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('textePublication')->add('image');
+        $builder->add('content');
 
     }/**
      * {@inheritdoc}
