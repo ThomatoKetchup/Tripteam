@@ -73,27 +73,42 @@ class GroupeController extends Controller
      */
     public function showAction(Request $request,Groupe $groupe)
     {
+        $em = $this->getDoctrine()->getManager();
+
+        /*Créer une nouvelle publication */
         $publication = new Publication();
         $form = $this->createForm('AppBundle\Form\PublicationType', $publication);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            /*La publication appartient à ce groupe, à pour auteur l'user actuel et est écrit à la date actuelle*/
             $publication->setGroupe($groupe);
-            $publication->setDatePublication('2000-01-01');
+            $publication->setAuthor($this->getUser());
+            $publication->setDate(new \DateTime("now"));
             $em = $this->getDoctrine()->getManager();
             $em->persist($publication);
             $em->flush();
-
-            return $this->redirectToRoute('publication_show', array('id' => $publication->getId()));
+            return $this->redirectToRoute('groupe_show', array('id' => $groupe->getId()));
         }
+
 
         //$groupes = $this->getUser()->getGroupes();
         //dump($this->getGroupe());die;
         $users = $groupe->getUsers();
+
+        //On récupère les publications liées à ce groupe du plus récent au plus ancien
+        $publications = $em->getRepository('AppBundle:Publication')->findBy(
+            array('groupe' => $groupe),
+            array('date' => 'desc'),
+            $limit  = 5,
+            $offset = null
+        );
+
         return $this->render('groupe/show.html.twig', array(
             'form' => $form->createView(),
             'groupe' => $groupe,
             'users' => $users,
+            'publications'=>$publications,
         ));
     }
 
