@@ -81,8 +81,8 @@ class UserController extends Controller
         //inutile
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $user = $editForm->getData(); //Demandez a expliquez cette ligne
-            $file = $user->getBrochure();
 
+            $file = $user->getBrochure();
             $fileName = $this->generateUniqueFileName().'.'.$file->guessExtension();
 
             // Move the file to the directory where brochures are stored
@@ -176,10 +176,9 @@ class UserController extends Controller
 
 
     /**
-     * Creates a new message entity.
      *
      * @Route("/{id}", name="message_new")
-     * @Method({"GET", "POST"})
+     * @Method("POST")
      */
     public function newMessageAction(Request $request)
     {

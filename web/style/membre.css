@@ -143,13 +143,14 @@ textarea {
     padding:35px 20px;
     margin-bottom:20px;
 }
-h1.content-title{
+
+h2.content-title{
+    font-family: 'Satisfy', cursive;
     font-size:32px;
     font-weight:300;
     text-align:center;
     margin-top:0;
     margin-bottom:20px;
-    font-family: 'Open Sans', sans-serif!important;
 }
 /*Compose*/
 .btn-send{
@@ -194,7 +195,7 @@ ul.mail-list li span.mail-message-preview{
     border-bottom-color:#7FBCC9!important;
 }
 
-title{
+.title{
     font-family: 'Satisfy', cursive;
 
 }

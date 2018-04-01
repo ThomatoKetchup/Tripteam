@@ -132,6 +132,23 @@
                                 <div class="form-group">
                                     <label class="col-md-3 control-label" for="">{{ form_label(edit_form.brochure, 'Photo de profil') }}</label>
                                     <div class="col-md-9">
+                                        {{ form_widget(edit_form.brochure, {'attr':{'class':"form-control", 'placeholder': ""}}) }}
+                                    </div>
+                                    {{ form_errors(edit_form.brochure) }}
+
+                                </div>
+                                {{ form_widget(edit_form) }}
+
+                                <input type="submit" class="btn btn-primary" value="Envoyer" />
+
+                                {{ form_end(edit_form) }}
+
+
+                                {{ form_start(edit_form) }}
+                                <!-- Photo de profil input-->
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label" for="">{{ form_label(edit_form.brochure, 'Photo de profil') }}</label>
+                                    <div class="col-md-9">
                                         {{ form_widget(edit_form.brochure, {'attr':{'class':"form-control", 'placeholder': "Entrez le lieu de votre séjour"}}) }}
                                     </div>
                                     {{ form_errors(edit_form.brochure) }}
@@ -161,7 +178,7 @@
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     <input type="submit" class="btn btn-primary" value="Envoyer" />
-                    {{ form_end(message_form) }}
+                    {{ form_end(edit_form) }}
                 </div>
 
 
